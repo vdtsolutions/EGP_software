@@ -1477,9 +1477,9 @@ class Ui_MainWindow(QtWidgets.QWidget):
         runid = self.runid
         pipe_id = self.combo_box.currentText()
         self.Weld_id_shm = int(pipe_id)
-        # lower_sensitivity = self.lower_Sensitivity_combo_box.text()
-        # upper_sensitivity = self.upper_Sensitivity_combo_box.text()
-        # print(type(lower_sensitivity),type(upper_sensitivity))
+        lower_sensitivity = self.lower_Sensitivity_combo_box.text()
+        upper_sensitivity = self.upper_Sensitivity_combo_box.text()
+        print(type(lower_sensitivity),type(upper_sensitivity))
         with connection.cursor() as cursor:
             # query = "SELECT start_index,end_index,length FROM pipes where runid=" + str(runid) + " and id=" + str(pipe_id)
             # cursor.execute(query)
@@ -1821,7 +1821,22 @@ class Ui_MainWindow(QtWidgets.QWidget):
         self.oddo1_li_chm = df_new['ODDO1'].tolist()
         index_hm = list(df_new['index'])
         self.index_tab8 = index_hm
-        df_clk = df_new[[f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]]
+        # df_clk = df_new[[f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]]
+        expected = [f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]
+
+        # auto match both HH:MM and HH:MM:SS
+        mapped = []
+        for e in expected:
+            if e in df_new.columns:
+                mapped.append(e)
+            elif f"{e}:00" in df_new.columns:
+                mapped.append(f"{e}:00")
+
+        if not mapped:
+            raise Exception(f"Clock columns missing. Available columns: {list(df_new.columns)}")
+
+        df_clk = df_new[mapped]
+
         self.clock_col = df_clk
         df_clk = df_clk.apply(pd.to_numeric, errors='coerce')
 
