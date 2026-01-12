@@ -30,13 +30,24 @@ Reference value will be consider
 """
 oddo1 = 1022.5864486
 oddo2 = 0
+oddo1_ref = oddo1
 roll_value = -5.43
 pipe_thickness = 5.5
 # pkl_path = os.getcwd() + '/DataFrames/'
 weld_pipe_pkl = os.getcwd() + '/DataFrames1/'
 roll_pkl_lc = os.getcwd() + '/DataFrames_rollLC/'
 clock_pkl = os.getcwd() + '/ClockDataFrames/'
+pitch_value = 54
+yaw_value = 23
+num_of_sensors = 48
+F_columns = int(num_of_sensors / 4)
+minute = 720 / num_of_sensors
+degree = minute / 2
 
+positive_sigma_col = 1.70
+positive_sigma_row = 0.45
+negative_sigma = 3
+defect_box_thresh = 0.25
 def error_msg(Title, Description):
     """
     Method that will show a alert box for Error

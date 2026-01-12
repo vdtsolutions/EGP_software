@@ -1,0 +1,1 @@
+SELECT *, ROW_NUMBER() OVER (ORDER BY filename,Serialno) AS index FROM `quantum-theme-334609.Processed_data.Main_8_copy_1` order by filename, Serialno

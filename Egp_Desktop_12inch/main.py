@@ -1716,12 +1716,95 @@ class Ui_MainWindow(QtWidgets.QWidget):
                 """
                 pkl file is found in local path 
                 """
+                import pandas as pd
                 folder_path = Config.clock_pkl + self.project_name
                 path = folder_path + '/' + str(self.weld_id) + '.pkl'
+                path = r"D:\Anubhav\EGP_software\EGP_software\Egp_Desktop_12inch\ClockDataFrames\253.pkl"
+
                 if os.path.isfile(path):
+
                     Config.print_with_time("File exist")
-                    df_new = pd.read_pickle(path)
-                    self.plot_clock_heatmap_t8(df_new)
+
+                    df_clock_holl = pd.read_pickle(path).reset_index(drop=True)
+
+                    clock_cols = [f"{h:02}:{int(m):02}" for h in range(12) for m in np.arange(0, 60, 15)]
+                    clock_x_cols = [c + "_x" for c in clock_cols]
+
+                    val_ori_sensVal = df_clock_holl[clock_cols].reset_index(drop=True)
+
+                    self.map_ori_sens_ind = df_clock_holl[clock_x_cols].reset_index(drop=True)
+                    self.map_ori_sens_ind.columns = self.map_ori_sens_ind.columns.str.rstrip('_x')
+
+                    self.clock_col = val_ori_sensVal
+                    self.clock_data_col = val_ori_sensVal.values.tolist()
+
+                    self.mean_clock_data = val_ori_sensVal.mean().values
+                    df3 = ((val_ori_sensVal - self.mean_clock_data) / self.mean_clock_data) * 100
+
+                    # ------------------- Plot -------------------
+
+                    self.figure_tab8.clear()
+                    ax2 = self.figure_tab8.add_subplot(111)
+                    ax2.figure.subplots_adjust(bottom=0.151, left=0.060, top=0.820, right=1.000)
+
+                    d1 = df3.T.astype(float)
+
+                    heat_map_obj = sns.heatmap(
+                        d1, cmap='jet', ax=ax2, vmin=-5, vmax=18, square=False,
+                        cbar_kws={'shrink': 0.8, 'pad': 0.005}
+                    )
+
+                    heat_map_obj.set(xlabel="Index", ylabel="Clock")
+
+                    cbar = heat_map_obj.collections[0].colorbar
+                    cbar.ax.set_position([0.955, 0.12, 0.02, 0.76])
+
+                    # ------------------- Axes -------------------
+
+                    self.oddo1_li_chm = df_clock_holl['ODDO1'].values.tolist()
+                    self.index_chm = df_clock_holl['index'].values.tolist()
+
+                    ax2.set_xticklabels(ax2.get_xticklabels(), size=9)
+                    ax2.set_yticklabels(ax2.get_yticklabels(), size=9)
+
+                    ax3 = ax2.twiny()
+                    oddo_val = [round(elem / 1000, 2) for elem in self.oddo1_li_chm]
+
+                    tick_positions1 = np.linspace(0, len(oddo_val) - 1, len(ax2.get_xticks())).astype(int)
+                    ax3.set_xticks(tick_positions1)
+                    ax3.set_xticklabels([f'{oddo_val[i]:.2f}' for i in tick_positions1], rotation=90, size=9)
+                    ax3.set_xlabel("Absolute Distance (m)", size=9)
+
+                    # ------------------- Hover -------------------
+
+                    def on_hover(event):
+                        if event.xdata is None or event.ydata is None:
+                            return
+                        x = int(event.xdata)
+                        y = int(event.ydata)
+                        if x < 0 or y < 0 or x >= len(self.index_chm) or y >= len(clock_cols):
+                            return
+
+                        index_value = self.index_chm[x]
+                        clock_val = clock_cols[y]
+                        clock = self.map_ori_sens_ind.T.iloc[y, x]
+                        value = d1.iloc[y, x]
+                        z = self.oddo1_li_chm[x]
+
+                        self.canvas_tab8.toolbar.set_message(
+                            f'Index={index_value}, Abs.distance(m)={z / 1000:.3f}, Clock={clock_val}, Value={value:.1f}'
+                        )
+
+                    self.index_tab8 = self.index_chm
+
+                    self.figure_tab8.canvas.mpl_connect('motion_notify_event', on_hover)
+                    self.canvas_tab8.draw()
+
+                    rs = RectangleSelector(self.figure_tab8.gca(), self.line_select_callback_t8, useblit=True)
+                    plt.connect('key_press_event', rs)
+
+                    Config.print_with_time("Plotted...")
+
                 else:
                     """
                     pkl file is not found than data fetch from GCP and save pkl file in local path
@@ -1736,81 +1819,355 @@ class Ui_MainWindow(QtWidgets.QWidget):
                     print(self.weld_id)
                     print(start_index, end_index)
                     Config.print_with_time("Start fetching at : ")
-                    query_for_start = 'SELECT index,ROLL,ODDO1,ODDO2,[proximity1, proximity2, proximity3, proximity4, proximity5, proximity6, proximity7, proximity8,proximity9, proximity10, proximity11, proximity12, proximity13, proximity14, proximity15,proximity16, proximity17, proximity18, proximity19, proximity20, proximity21, proximity22, proximity23, proximity24] FROM ' + Config.table_name + ' WHERE index>{} AND index<{} order by index'
-                    query_job = client.query(query_for_start.format(start_index, end_index))
-                    results = query_job.result()
+                    # query_for_start = 'SELECT index,ROLL,ODDO1,ODDO2,[proximity1, proximity2, proximity3, proximity4, proximity5, proximity6, proximity7, proximity8,proximity9, proximity10, proximity11, proximity12, proximity13, proximity14, proximity15,proximity16, proximity17, proximity18, proximity19, proximity20, proximity21, proximity22, proximity23, proximity24] FROM ' + Config.table_name + ' WHERE index>{} AND index<{} order by index'
+                    # query_job = client.query(query_for_start.format(start_index, end_index))
+                    # results = query_job.result()
+
+                    # import pandas as pd
+                    #
+                    # res_hall = [
+                    #     'F1H1', 'F1H2', 'F1H3', 'F1H4', 'F2H1', 'F2H2', 'F2H3', 'F2H4',
+                    #     'F3H1', 'F3H2', 'F3H3', 'F3H4', 'F4H1', 'F4H2', 'F4H3', 'F4H4',
+                    #     'F5H1', 'F5H2', 'F5H3', 'F5H4', 'F6H1', 'F6H2', 'F6H3', 'F6H4',
+                    #     'F7H1', 'F7H2', 'F7H3', 'F7H4', 'F8H1', 'F8H2', 'F8H3', 'F8H4',
+                    #     'F9H1', 'F9H2', 'F9H3', 'F9H4', 'F10H1', 'F10H2', 'F10H3', 'F10H4',
+                    #     'F11H1', 'F11H2', 'F11H3', 'F11H4', 'F12H1', 'F12H2', 'F12H3', 'F12H4'
+                    # ]
+                    #
+                    # df = pd.read_csv(r"D:\Anubhav\data_egp\hall_data\Final_Stitched_90000_CSV\DataLogs-213_update.csv")
+                    #
+                    # results = (
+                    #     df[["index", "ROLL", "ODDO1", "ODDO2"] + res_hall]
+                    #         .query("index > @start_index and index < @end_index")
+                    #         .sort_values("index")
+                    #         .itertuples(index=False, name=None)
+                    # )
+                    # print("CSV Columns:", ["index", "ROLL", "ODDO1", "ODDO2"] + res_hall)
+                    # print("First 2 Rows:", list(results)[:2])
+
                     # results.to_csv("C:/Users/shrey/Desktop/b.csv")
                     # print("result...", results)
-                    data = []
-                    index_tab8 = []
-                    oddo_1 = []
-                    oddo_2 = []
-                    # indexes = []
-                    roll1 = []
-                    for row in results:
-                        index_tab8.append(row[0])
-                        roll1.append(row[1])
-                        oddo_1.append(row[2])
-                        oddo_2.append(row[3])
-                        data.append(row[4])
+                    weld_pipe_pkl = os.path.join(os.getcwd(), 'DataFrames1') + '/'
+                    clock_pkl = os.path.join(os.getcwd(), 'ClockDataFrames') + '/'
+
+                    os.makedirs(weld_pipe_pkl, exist_ok=True)
+                    os.makedirs(clock_pkl, exist_ok=True)
+                    Weld_id_tab9 = 253
+                    folder_path1 = weld_pipe_pkl
+                    folder_path = clock_pkl
+
+                    def fetch_and_save_tab9_data(self, client, start_index, end_index, folder_path1, Weld_id_tab9):
+
+                        Weld_id_tab9 = 235
+                        Config.print_with_time("Start of conversion at : ")
+
+                        csv_path = r"D:\Anubhav\data_egp\hall_data\Final_Stitched_90000_CSV\DataLogs-213_update.csv"
+                        pipe_df = pd.read_csv(csv_path)
+                        pipe_df["index"] = pipe_df["index"].astype(int)
+
+                        hall_cols = [
+                            'F1H1', 'F1H2', 'F1H3', 'F1H4', 'F2H1', 'F2H2', 'F2H3', 'F2H4',
+                            'F3H1', 'F3H2', 'F3H3', 'F3H4', 'F4H1', 'F4H2', 'F4H3', 'F4H4',
+                            'F5H1', 'F5H2', 'F5H3', 'F5H4', 'F6H1', 'F6H2', 'F6H3', 'F6H4',
+                            'F7H1', 'F7H2', 'F7H3', 'F7H4', 'F8H1', 'F8H2', 'F8H3', 'F8H4',
+                            'F9H1', 'F9H2', 'F9H3', 'F9H4', 'F10H1', 'F10H2', 'F10H3', 'F10H4',
+                            'F11H1', 'F11H2', 'F11H3', 'F11H4', 'F12H1', 'F12H2', 'F12H3', 'F12H4'
+                        ]
+
+                        prox_cols = [
+                            'F1P1', 'F2P2', 'F3P3', 'F4P4',
+                            'F5P1','F6P2','F7P3','F8P4',
+                            'F9P1','F10P2', 'F11P3',  'F12P4'
+                        ]
+
+                        df_main = pipe_df.loc[
+                            (pipe_df["index"] > start_index) &
+                            (pipe_df["index"] < end_index),
+                            ["index", "ROLL", "ODDO1", "ODDO2", *hall_cols, "PITCH", "YAW"]
+                        ].sort_values("index").reset_index(drop=True)
+
+                        df_main["ODDO1"] -= Config.oddo1
+                        df_main["ODDO2"] -= Config.oddo2
+                        df_main["ROLL"] -= Config.roll_value
+                        df_main["PITCH"] -= Config.pitch_value
+                        df_main["YAW"] -= Config.yaw_value
+
+                        prox_df = pipe_df.loc[
+                            (pipe_df["index"] > start_index) &
+                            (pipe_df["index"] < end_index),
+                            ["index", *prox_cols]
+                        ].sort_values("index").reset_index(drop=True)
+
+                        # 🔒 alignment fix
+                        prox_df = prox_df.set_index("index").loc[df_main["index"]].reset_index()
+
+                        index_tab9 = df_main["index"].tolist()
+                        index_hm_orientation = prox_df["index"].tolist()
+
+                        df_elem = df_main[["index", "ODDO1", "ROLL", "PITCH", "YAW"]].copy()
+                        self_df_new_proximity_orientat = prox_df[prox_cols].copy()
+
+                        df_pipe = df_main.merge(prox_df, on="index", how="inner")
+
+                        file_path = folder_path1 + '/' + str(Weld_id_tab9) + '.pkl'
+                        df_pipe.to_pickle(file_path)
+
+                        return {
+                            "file_path": file_path,
+                            "df_pipe": df_pipe,
+                            "index_tab9": index_tab9,
+                            "index_hm_orientation": index_hm_orientation,
+                            "df_elem": df_elem,
+                            "df_new_proximity_orientat": self_df_new_proximity_orientat,
+                        }
+                    def degrees_to_hours_minutes2(degrees):
+                        if (degrees < 0):
+                            degrees = degrees % 360
+                        elif degrees >= 360:
+                            degrees %= 360
+                        degrees_per_second = 360 / (12 * 60 * 60)
+                        total_seconds = degrees / degrees_per_second
+                        hours = int(total_seconds // 3600)
+                        minutes = int((total_seconds % 3600) // 60)
+                        seconds = int(total_seconds % 60)
+                        return f"{hours:02d}:{minutes:02d}"
+                    def process_weld_data_to_create_data_array_for_clustering(self, folder_path1, Weld_id_tab9):
                         """
-                        Swapping the Pitch data to Roll data
+                        Generates processed hall & proximity data arrays for clustering
+                        from the saved weld sensor pickle file (.pkl).
+
+                        Performs:
+                        - data cleaning
+                        - roll & clock mapping
+                        - sigma-based hall classification
+                        - anomaly extraction
+                        - cluster-ready data array creation
                         """
-                    oddo1_tab8 = []
-                    oddo2_tab8 = []
-                    roll_t = []
-                    """
-                    Reference value will be consider 
-                    """
-                    for odometer1 in oddo_1:
-                        od1 = odometer1 - Config.oddo1  ###16984.2 change According to run
-                        oddo1_tab8.append(od1)
-                    for odometer2 in oddo_2:
-                        od2 = odometer2 - Config.oddo2  ###17690.36 change According to run
-                        oddo2_tab8.append(od2)
-                    for roll2 in roll1:
-                        roll3 = roll2 - Config.roll_value
-                        roll_t.append(roll3)
-                    """
-                    Reference value will be consider
-                    """
+                        Weld_id_tab9 = 235
+                        # Load dataframe from pickle and forward fill
+                        df = pd.read_pickle(folder_path1 + '/' + str(Weld_id_tab9) + '.pkl')
+                        data_x = df.fillna(method='ffill')
 
-                    # """ Roll original values is being calculated """
-                    # roll_dictionary = {'1': roll_t}
-                    # angle = [round(i*30, 1) for i in range(0, 24)]
-                    # # print(len(angle))
-                    # for i in range(2, 25):
-                    #     current_values = [round((value + angle[i - 1]), 2) for value in roll_t]
-                    #     roll_dictionary['{}'.format(i)] = current_values
-                    # clock_dictionary = {}
-                    # for key in roll_dictionary:
-                    #     clock_dictionary[key] = [self.degrees_to_hours_minutes(value) for value in roll_dictionary[key]]
-                    # Roll_hr = pd.DataFrame(clock_dictionary)
-                    # Roll_hr.columns = [f"{h:02}:{m:02}:00_x" for h in range(12) for m in range(0, 60, 30)]
-                    # """ Roll original values is being calculated """
+                        # Slice proximity data
+                        df_new_proximity = pd.DataFrame(
+                            df,
+                            columns=['F1P1', 'F2P2', 'F3P3', 'F4P4',
+                            'F5P1','F6P2','F7P3','F8P4',
+                            'F9P1','F10P2', 'F11P3',  'F12P4']
+                        )
 
-                    df_new_tab8 = pd.DataFrame(data, columns=[f'proximity{i}' for i in range(1, 25)])
-                    df_new_tab8 = df_new_tab8.apply(pd.to_numeric, errors='coerce')
+                        # Build roll_dictionary and convert to clock words
+                        roll = data_x['ROLL'].tolist()
+                        roll1 = []
+                        for i in roll:
+                            roll1.append(i)
 
-                    # Mean1 = df_new_tab8.mean()
-                    # # df3 = ((df_clk - Mean1)/Mean1) * 10000
-                    # for i, data in enumerate(df_new_tab8.columns):
-                    #     df_new_tab8[data] = (df_new_tab8[data] - Mean1[i]) / df_new_tab8[data] * 100
-                    # # df_new_tab8[df_new_tab8 < 0] = 0
+                        roll_dictionary = {'1': roll1}
+                        angle = [round(i * Config.degree, 1) for i in range(0, Config.num_of_sensors)]
 
-                    Config.print_with_time("Roll calculation starts at : ")
-                    map_ori_sens_ind, val_ori_sensVal = self.Roll_Calculation(df_new_tab8, roll_t)
-                    Config.print_with_time("Roll calculation ends at : ")
+                        for i in range(2, Config.num_of_sensors + 1):
+                            current_values = [round((value + angle[i - 1]), 2) for value in roll1]
+                            roll_dictionary['{}'.format(i)] = current_values
 
-                    # df_new_tab8.columns = [f"{h:02}:{m:02}:00" for h in range(12) for m in range(0, 60, 30)]
-                    df_elem = pd.DataFrame({"index": index_tab8, "ODDO1": oddo1_tab8})
-                    frames = [df_elem, val_ori_sensVal]
-                    df_new = pd.concat(frames, axis=1, join='inner')
-                    # for col in Roll_hr.columns:
-                    #     df_new[col + '_x'] = Roll_hr[col]
-                    df_new.to_pickle(folder_path + '/' + str(self.weld_id) + '.pkl')
-                    Config.print_with_time("Succesfully saved to pickle file")
-                    self.plot_clock_heatmap_t8(df_new)
+                        clock_dictionary = {}
+                        for key in roll_dictionary:
+                            clock_dictionary[key] = [degrees_to_hours_minutes2(value) for value in roll_dictionary[key]]
+
+                        Roll_hr = pd.DataFrame(clock_dictionary)
+                        # Roll_hr.columns = [f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, self.config.minute)]
+                        Roll_hr.columns = [f"{h:02}:{int(m):02}" for h in range(12) for m in
+                                           np.arange(0, 60, Config.minute)]
+
+                        # odometer in km
+                        oddometer1 = ((data_x['ODDO1'] - Config.oddo1_ref) / 1000).round(3)
+
+                        # Hall sensor frames
+                        df3_raw = data_x[
+                            [f'F{i}H{j}' for i in range(1, Config.F_columns + 1) for j in range(1, 5)]]
+                        df2 = data_x[[f'F{i}H{j}' for i in range(1, Config.F_columns + 1) for j in range(1, 5)]]
+
+                        print("Calculating sigma thresholds using original proven method...")
+                        mean1 = df2.mean().tolist()
+                        standard_deviation = df2.std(axis=0, skipna=True).tolist()
+
+                        mean_plus_1sigma = []
+                        for i, data1 in enumerate(mean1):
+                            sigma1 = data1 + (Config.positive_sigma_col) * standard_deviation[i]
+                            mean_plus_1sigma.append(sigma1)
+
+                        mean_negative_3sigma = []
+                        for i_2, data_3 in enumerate(mean1):
+                            sigma_3 = data_3 - (Config.negative_sigma) * standard_deviation[i_2]
+                            mean_negative_3sigma.append(sigma_3)
+
+                        for col, data_col in enumerate(df2.columns):
+                            df2[data_col] = df2[data_col].apply(
+                                lambda x: 1 if x > mean_plus_1sigma[col] else (
+                                    -1 if x < mean_negative_3sigma[col] else 0))
+
+                        clock_cols = [f"{h:02}:{int(m):02}" for h in range(12) for m in
+                                      np.arange(0, 60, Config.minute)]
+                        df2.columns = clock_cols
+                        filtered_df1 = df2
+
+                        # Align raw to classified, multiply to keep signed magnitude
+                        df3_raw.columns = filtered_df1.columns
+                        df1_aligned = filtered_df1.reindex(df3_raw.index)
+                        result = df1_aligned * df3_raw
+                        result = result.dropna()
+                        result.reset_index(drop=True, inplace=True)
+
+                        result_raw_df = result.mask(result == 0, df3_raw)
+                        result_raw_df = result_raw_df.dropna()
+                        result_raw_df.reset_index(drop=True, inplace=True)
+
+                        mean_clock_data = result_raw_df.mean().tolist()
+                        val_ori_raw = ((result_raw_df - mean_clock_data) / mean_clock_data) * 100
+
+                        # Build PTT csv-style structure
+                        ptt_csv = result.copy()
+                        ptt_csv['ODDO1'] = data_x['ODDO1']
+                        prefix = '_x'
+                        for col in Roll_hr.columns:
+                            ptt_csv[col + prefix] = Roll_hr[col]
+                        for col in df_new_proximity.columns:
+                            ptt_csv[col] = df_new_proximity[col]
+
+                        # Prep clustering data
+                        t = result.transpose()
+                        t_raw = val_ori_raw.transpose()
+                        data_array = t.to_numpy(dtype=np.float64)
+
+                        # return whatever the rest of pipeline uses
+                        return {
+                            "df": df,
+                            "data_x": data_x,
+                            "df_new_proximity": df_new_proximity,
+                            "Roll_hr": Roll_hr,
+                            "oddometer1": oddometer1,
+                            "result": result,
+                            "result_raw_df": result_raw_df,
+                            "val_ori_raw": val_ori_raw,
+                            "ptt_csv": ptt_csv,
+                            "t": t,
+                            "t_raw": t_raw,
+                            "data_array": data_array,
+                            "mean1": mean1,
+                            "standard_deviation": standard_deviation,
+                            "df_new_proximity": df_new_proximity,
+                            "Roll_hr": Roll_hr,
+                            "df3_raw": df3_raw
+                        }
+
+                    out = fetch_and_save_tab9_data(self, client, start_index, end_index, folder_path1, Weld_id_tab9)
+                    self.index_tab8 = out["index_tab9"]
+                    df_elem = out["df_elem"]
+                    df_new_proximity_orientat = out["df_new_proximity_orientat"]
+
+                    processed_data_array = process_weld_data_to_create_data_array_for_clustering(self, folder_path1,
+                                                                                                 Weld_id_tab9)
+
+                    result_raw_df = processed_data_array["result_raw_df"]
+                    Roll_hr = processed_data_array["Roll_hr"]
+
+                    def save_clock_pkl(self, df_elem, result_raw_df, Roll_hr, folder_path, df_new_proximity_orientat):
+
+                        df_new = pd.concat([
+                            df_elem.reset_index(drop=True),
+                            result_raw_df.reset_index(drop=True)
+                        ], axis=1)
+
+                        for col in df_new_proximity_orientat.columns:
+                            df_new[col] = df_new_proximity_orientat[col].values
+
+                        for col in Roll_hr.columns:
+                            df_new[col + '_x'] = Roll_hr[col].values
+
+                        df_new.to_pickle(folder_path + '/' + str(Weld_id_tab9) + '.pkl')
+                        Config.print_with_time("Succesfully saved to clock pickle file")
+
+
+
+                    save_clock_pkl(self, df_elem, result_raw_df, Roll_hr, folder_path, df_new_proximity_orientat)
+
+                    print("done")
+
+                    # data = []
+                    # index_tab8 = []
+                    # oddo_1 = []
+                    # oddo_2 = []
+                    # # indexes = []
+                    # roll1 = []
+                    # for row in results:
+                    #     index_tab8.append(row[0])
+                    #     roll1.append(row[1])
+                    #     oddo_1.append(row[2])
+                    #     oddo_2.append(row[3])
+                    #     data.append(row[4])
+                    #     """
+                    #     Swapping the Pitch data to Roll data
+                    #     """
+                    # oddo1_tab8 = []
+                    # oddo2_tab8 = []
+                    # roll_t = []
+                    # """
+                    # Reference value will be consider
+                    # """
+                    # for odometer1 in oddo_1:
+                    #     od1 = odometer1 - Config.oddo1  ###16984.2 change According to run
+                    #     oddo1_tab8.append(od1)
+                    # for odometer2 in oddo_2:
+                    #     od2 = odometer2 - Config.oddo2  ###17690.36 change According to run
+                    #     oddo2_tab8.append(od2)
+                    # for roll2 in roll1:
+                    #     roll3 = roll2 - Config.roll_value
+                    #     roll_t.append(roll3)
+                    # """
+                    # Reference value will be consider
+                    # """
+                    #
+                    # # """ Roll original values is being calculated """
+                    # # roll_dictionary = {'1': roll_t}
+                    # # angle = [round(i*30, 1) for i in range(0, 24)]
+                    # # # print(len(angle))
+                    # # for i in range(2, 25):
+                    # #     current_values = [round((value + angle[i - 1]), 2) for value in roll_t]
+                    # #     roll_dictionary['{}'.format(i)] = current_values
+                    # # clock_dictionary = {}
+                    # # for key in roll_dictionary:
+                    # #     clock_dictionary[key] = [self.degrees_to_hours_minutes(value) for value in roll_dictionary[key]]
+                    # # Roll_hr = pd.DataFrame(clock_dictionary)
+                    # # Roll_hr.columns = [f"{h:02}:{m:02}:00_x" for h in range(12) for m in range(0, 60, 30)]
+                    # # """ Roll original values is being calculated """
+                    #
+                    #
+                    #
+                    # df_new_tab8 = pd.DataFrame(data, columns=[f'proximity{i}' for i in range(1, 25)])
+                    # df_new_tab8 = df_new_tab8.apply(pd.to_numeric, errors='coerce')
+                    #
+                    # # df_new_tab8 = pd.DataFrame(data, columns=res_hall)
+                    # # df_new_tab8 = df_new_tab8.apply(pd.to_numeric, errors='coerce')
+                    #
+                    # # Mean1 = df_new_tab8.mean()
+                    # # # df3 = ((df_clk - Mean1)/Mean1) * 10000
+                    # # for i, data in enumerate(df_new_tab8.columns):
+                    # #     df_new_tab8[data] = (df_new_tab8[data] - Mean1[i]) / df_new_tab8[data] * 100
+                    # # # df_new_tab8[df_new_tab8 < 0] = 0
+                    #
+                    # Config.print_with_time("Roll calculation starts at : ")
+                    # map_ori_sens_ind, val_ori_sensVal = self.Roll_Calculation(df_new_tab8, roll_t)
+                    # Config.print_with_time("Roll calculation ends at : ")
+                    #
+                    # # df_new_tab8.columns = [f"{h:02}:{m:02}:00" for h in range(12) for m in range(0, 60, 30)]
+                    # df_elem = pd.DataFrame({"index": index_tab8, "ODDO1": oddo1_tab8})
+                    # frames = [df_elem, val_ori_sensVal]
+                    # df_new = pd.concat(frames, axis=1, join='inner')
+                    # # for col in Roll_hr.columns:
+                    # #     df_new[col + '_x'] = Roll_hr[col]
+                    # df_new.to_pickle(folder_path + '/' + str(self.weld_id) + '.pkl')
+                    # Config.print_with_time("Succesfully saved to pickle file")
+                    # self.plot_clock_heatmap_t8(df_new)
+
 
     def plot_clock_heatmap_t8(self, df_new):
         self.figure_tab8.clear()
@@ -1822,6 +2179,8 @@ class Ui_MainWindow(QtWidgets.QWidget):
         index_hm = list(df_new['index'])
         self.index_tab8 = index_hm
         # df_clk = df_new[[f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]]
+
+
         expected = [f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]
 
         # auto match both HH:MM and HH:MM:SS
@@ -1902,6 +2261,245 @@ class Ui_MainWindow(QtWidgets.QWidget):
 
             except pymysql.Error as e:
                 print(f"MySQL Error: {e}")
+
+    # def show_heatmap_tab8(self):
+    #     weld_id = self.combo_box_tab8.currentText()
+    #     self.weld_id = int(weld_id)
+    #     runid = self.runid
+    #     print(self.project_name)
+    #     # print("weld_id", weld_id)
+    #
+    #     with connection.cursor() as cursor:
+    #         Fetch_weld_detail = "SELECT start_index, end_index,start_oddo1,end_oddo1 FROM welds WHERE runid=%s AND id IN (%s, (SELECT MAX(id) FROM welds WHERE runid=%s AND id < %s)) ORDER BY id"
+    #         cursor.execute(Fetch_weld_detail, (self.runid, self.weld_id, self.runid, self.weld_id))
+    #         result = cursor.fetchall()
+    #         start_oddo1 = result[0][2]
+    #         end_oddo1 = result[1][3]
+    #         self.weld_Pipe_length_t8 = round(end_oddo1 - start_oddo1, 2)
+    #
+    #         if not result:
+    #             Config.print_with_time("No data found for this pipe ID : ")
+    #         else:
+    #             """
+    #             pkl file is found in local path
+    #             """
+    #             import pandas as pd
+    #             folder_path = Config.clock_pkl + self.project_name
+    #             path = folder_path + '/' + str(self.weld_id) + '.pkl'
+    #             if os.path.isfile(path):
+    #                 Config.print_with_time("File exist")
+    #                 df_new = pd.read_pickle(path)
+    #                 self.plot_clock_heatmap_t8(df_new)
+    #             else:
+    #                 """
+    #                 pkl file is not found than data fetch from GCP and save pkl file in local path
+    #                 """
+    #                 print(folder_path)
+    #                 Config.print_with_time("File not exist")
+    #                 try:
+    #                     os.makedirs(folder_path)
+    #                 except:
+    #                     Config.print_with_time("Folder already exists")
+    #                 start_index, end_index = result[0][0], result[1][1]
+    #                 print(self.weld_id)
+    #                 print(start_index, end_index)
+    #                 Config.print_with_time("Start fetching at : ")
+    #                 query_for_start = 'SELECT index,ROLL,ODDO1,ODDO2,[proximity1, proximity2, proximity3, proximity4, proximity5, proximity6, proximity7, proximity8,proximity9, proximity10, proximity11, proximity12, proximity13, proximity14, proximity15,proximity16, proximity17, proximity18, proximity19, proximity20, proximity21, proximity22, proximity23, proximity24] FROM ' + Config.table_name + ' WHERE index>{} AND index<{} order by index'
+    #                 query_job = client.query(query_for_start.format(start_index, end_index))
+    #                 results = query_job.result()
+    #
+    #                 # import pandas as pd
+    #                 #
+    #                 # res_hall = [
+    #                 #     'F1H1', 'F1H2', 'F1H3', 'F1H4', 'F2H1', 'F2H2', 'F2H3', 'F2H4',
+    #                 #     'F3H1', 'F3H2', 'F3H3', 'F3H4', 'F4H1', 'F4H2', 'F4H3', 'F4H4',
+    #                 #     'F5H1', 'F5H2', 'F5H3', 'F5H4', 'F6H1', 'F6H2', 'F6H3', 'F6H4',
+    #                 #     'F7H1', 'F7H2', 'F7H3', 'F7H4', 'F8H1', 'F8H2', 'F8H3', 'F8H4',
+    #                 #     'F9H1', 'F9H2', 'F9H3', 'F9H4', 'F10H1', 'F10H2', 'F10H3', 'F10H4',
+    #                 #     'F11H1', 'F11H2', 'F11H3', 'F11H4', 'F12H1', 'F12H2', 'F12H3', 'F12H4'
+    #                 # ]
+    #                 #
+    #                 # df = pd.read_csv(r"D:\Anubhav\data_egp\hall_data\Final_Stitched_90000_CSV\DataLogs-213_update.csv")
+    #                 #
+    #                 # results = (
+    #                 #     df[["index", "ROLL", "ODDO1", "ODDO2"] + res_hall]
+    #                 #         .query("index > @start_index and index < @end_index")
+    #                 #         .sort_values("index")
+    #                 #         .itertuples(index=False, name=None)
+    #                 # )
+    #                 # print("CSV Columns:", ["index", "ROLL", "ODDO1", "ODDO2"] + res_hall)
+    #                 # print("First 2 Rows:", list(results)[:2])
+    #
+    #                 # results.to_csv("C:/Users/shrey/Desktop/b.csv")
+    #                 # print("result...", results)
+    #                 data = []
+    #                 index_tab8 = []
+    #                 oddo_1 = []
+    #                 oddo_2 = []
+    #                 # indexes = []
+    #                 roll1 = []
+    #                 for row in results:
+    #                     index_tab8.append(row[0])
+    #                     roll1.append(row[1])
+    #                     oddo_1.append(row[2])
+    #                     oddo_2.append(row[3])
+    #                     data.append(row[4])
+    #                     """
+    #                     Swapping the Pitch data to Roll data
+    #                     """
+    #                 oddo1_tab8 = []
+    #                 oddo2_tab8 = []
+    #                 roll_t = []
+    #                 """
+    #                 Reference value will be consider
+    #                 """
+    #                 for odometer1 in oddo_1:
+    #                     od1 = odometer1 - Config.oddo1  ###16984.2 change According to run
+    #                     oddo1_tab8.append(od1)
+    #                 for odometer2 in oddo_2:
+    #                     od2 = odometer2 - Config.oddo2  ###17690.36 change According to run
+    #                     oddo2_tab8.append(od2)
+    #                 for roll2 in roll1:
+    #                     roll3 = roll2 - Config.roll_value
+    #                     roll_t.append(roll3)
+    #                 """
+    #                 Reference value will be consider
+    #                 """
+    #
+    #                 # """ Roll original values is being calculated """
+    #                 # roll_dictionary = {'1': roll_t}
+    #                 # angle = [round(i*30, 1) for i in range(0, 24)]
+    #                 # # print(len(angle))
+    #                 # for i in range(2, 25):
+    #                 #     current_values = [round((value + angle[i - 1]), 2) for value in roll_t]
+    #                 #     roll_dictionary['{}'.format(i)] = current_values
+    #                 # clock_dictionary = {}
+    #                 # for key in roll_dictionary:
+    #                 #     clock_dictionary[key] = [self.degrees_to_hours_minutes(value) for value in roll_dictionary[key]]
+    #                 # Roll_hr = pd.DataFrame(clock_dictionary)
+    #                 # Roll_hr.columns = [f"{h:02}:{m:02}:00_x" for h in range(12) for m in range(0, 60, 30)]
+    #                 # """ Roll original values is being calculated """
+    #
+    #
+    #
+    #                 df_new_tab8 = pd.DataFrame(data, columns=[f'proximity{i}' for i in range(1, 25)])
+    #                 df_new_tab8 = df_new_tab8.apply(pd.to_numeric, errors='coerce')
+    #
+    #                 # df_new_tab8 = pd.DataFrame(data, columns=res_hall)
+    #                 # df_new_tab8 = df_new_tab8.apply(pd.to_numeric, errors='coerce')
+    #
+    #                 # Mean1 = df_new_tab8.mean()
+    #                 # # df3 = ((df_clk - Mean1)/Mean1) * 10000
+    #                 # for i, data in enumerate(df_new_tab8.columns):
+    #                 #     df_new_tab8[data] = (df_new_tab8[data] - Mean1[i]) / df_new_tab8[data] * 100
+    #                 # # df_new_tab8[df_new_tab8 < 0] = 0
+    #
+    #                 Config.print_with_time("Roll calculation starts at : ")
+    #                 map_ori_sens_ind, val_ori_sensVal = self.Roll_Calculation(df_new_tab8, roll_t)
+    #                 Config.print_with_time("Roll calculation ends at : ")
+    #
+    #                 # df_new_tab8.columns = [f"{h:02}:{m:02}:00" for h in range(12) for m in range(0, 60, 30)]
+    #                 df_elem = pd.DataFrame({"index": index_tab8, "ODDO1": oddo1_tab8})
+    #                 frames = [df_elem, val_ori_sensVal]
+    #                 df_new = pd.concat(frames, axis=1, join='inner')
+    #                 # for col in Roll_hr.columns:
+    #                 #     df_new[col + '_x'] = Roll_hr[col]
+    #                 df_new.to_pickle(folder_path + '/' + str(self.weld_id) + '.pkl')
+    #                 Config.print_with_time("Succesfully saved to pickle file")
+    #                 self.plot_clock_heatmap_t8(df_new)
+
+    # def plot_clock_heatmap_t8(self, df_new):
+    #     self.figure_tab8.clear()
+    #     ax2 = self.figure_tab8.add_subplot(111)
+    #     ax2.figure.subplots_adjust(bottom=0.213, left=0.077, top=0.855, right=1.000)
+    #     # self.Roll_hr = df_new[[f"{h:02}:{m:02}:00_x" for h in range(12) for m in range(0, 60, 30)]]
+    #
+    #     self.oddo1_li_chm = df_new['ODDO1'].tolist()
+    #     index_hm = list(df_new['index'])
+    #     self.index_tab8 = index_hm
+    #     # df_clk = df_new[[f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]]
+    #
+    #
+    #     expected = [f"{h:02}:{m:02}" for h in range(12) for m in range(0, 60, 30)]
+    #
+    #     # auto match both HH:MM and HH:MM:SS
+    #     mapped = []
+    #     for e in expected:
+    #         if e in df_new.columns:
+    #             mapped.append(e)
+    #         elif f"{e}:00" in df_new.columns:
+    #             mapped.append(f"{e}:00")
+    #
+    #     if not mapped:
+    #         raise Exception(f"Clock columns missing. Available columns: {list(df_new.columns)}")
+    #
+    #     df_clk = df_new[mapped]
+    #
+    #     self.clock_col = df_clk
+    #     df_clk = df_clk.apply(pd.to_numeric, errors='coerce')
+    #
+    #     Mean1 = df_clk.mean()
+    #     # df3 = ((df_clk - Mean1)/Mean1) * 10000
+    #     for i, data in enumerate(df_clk.columns):
+    #         df_clk[data] = (df_clk[data] - Mean1[i]) / df_clk[data] * 10000
+    #     df_clk[df_clk < 0] = 0
+    #     d1 = df_clk.transpose().astype(float)
+    #     # d1 = df_clk.transpose()
+    #
+    #     # heat_map_obj = sns.heatmap(d1, cmap='jet', ax=ax2)
+    #     heat_map_obj = sns.heatmap(d1, cmap='jet', ax=ax2, vmin=-2, vmax=12)
+    #     heat_map_obj.set(xlabel="Index", ylabel="Clock")
+    #
+    #     ax2.set_xticklabels(ax2.get_xticklabels(), size=9)
+    #     ax2.set_yticklabels(ax2.get_yticklabels(), size=9)
+    #
+    #     ax3 = ax2.twiny()
+    #     oddo_val = [round(elem / 1000, 2) for elem in self.oddo1_li_chm]
+    #     num_ticks1 = len(ax2.get_xticks())  # Adjust the number of ticks based on your preference
+    #     # print(num_ticks1)
+    #     tick_positions1 = [int(i) for i in np.linspace(0, len(oddo_val) - 1, num_ticks1)]
+    #     # print(tick_positions1)
+    #     ax3.set_xticks(tick_positions1)
+    #     ax3.set_xticklabels([f'{oddo_val[i]:.2f}' for i in tick_positions1], rotation=90, size=9)
+    #     ax3.set_xlabel("Absolute Distance (m)", size=9)
+    #     def on_hover(event):
+    #         if event.xdata is not None and event.ydata is not None:
+    #             try:
+    #                 x = int(event.xdata)
+    #                 y = int(event.ydata)
+    #                 index_value = index_hm[x]
+    #                 value = d1.iloc[y, x]
+    #                 z = self.oddo1_li_chm[x]
+    #                 self.canvas_tab8.toolbar.set_message(f'Index={index_value:.0f},Abs.distance(m)={z/1000:.2f},Sensor_no={y:.0f},Value={value:.0f}')
+    #             except (IndexError, ValueError):
+    #                 # Print a user-friendly message instead of showing an error
+    #                 print("Hovering outside valid data range. No data available.")
+    #     self.figure_tab8.canvas.mpl_connect('motion_notify_event', on_hover)
+    #     self.canvas_tab8.draw()  # Update the canvas with the new plot
+    #     rs = RectangleSelector(self.figure_tab8.gca(), self.line_select_callback_t8, useblit=True)
+    #     plt.connect('key_press_event', rs)
+    #     Config.print_with_time("Plotted...")
+    #     with connection.cursor() as cursor:
+    #         Fetch_weld_detail = "select id,pipe_id,WT,Absolute_distance,Upstream,Feature_type,Orientation,length,Width,depth from dent_clock_hm where runid='%s' and pipe_id='%s'"
+    #         cursor.execute(Fetch_weld_detail, (self.runid, self.weld_id))
+    #         self.myTableWidget_tab8.setRowCount(0)
+    #         allSQLRows = cursor.fetchall()
+    #         try:
+    #             if allSQLRows:
+    #                 for row_number, row_data in enumerate(allSQLRows):
+    #                     self.myTableWidget_tab8.insertRow(row_number)
+    #                     for column_num, data in enumerate(row_data):
+    #                         self.myTableWidget_tab8.setItem(row_number, column_num,
+    #                                                         QtWidgets.QTableWidgetItem(str(data)))
+    #                 # self.myTableWidget_tab9.setEditTriggers(QAbstractItemView.NoEditTriggers)
+    #                 self.myTableWidget_tab8.setContextMenuPolicy(Qt.CustomContextMenu)
+    #                 self.myTableWidget_tab8.doubleClicked.connect(self.handle_table_double_click_t8)
+    #                 # self.myTableWidget_tab8.customContextMenuRequested.connect(self.open_context_menu_ori_hm)
+    #                 # Check canvas visibility before adding the double-click functionality
+    #                 # self.myTableWidget_tab8.doubleClicked.connect(self.handle_table_double_click_chm)
+    #
+    #         except pymysql.Error as e:
+    #             print(f"MySQL Error: {e}")
 
     def line_select_callback_t8(self, eclick, erelease):
         self.rect_start_hm = eclick.xdata, eclick.ydata

@@ -1,0 +1,3204 @@
+C:\Users\admin\AppData\Local\Programs\Python\Python38\python.exe D:/Anubhav/vdt_backend/GMFL_12_Inch_Desktop/main_test.py
+An error occurred: module 'importlib.metadata' has no attribute 'packages_distributions'
+Dataset(DatasetReference('quantum-theme-334609', 'Processed_data'))
+generated app
+mssage box created
+inside setup_ui
+Dataset(DatasetReference('quantum-theme-334609', 'Processed_data_12inch_gmfl_without_time'))
+generated app
+mssage box created
+✅ Loaded config: <module 'GMFL_12_Inch_Desktop.Components.Configs.config_12_inch' from 'D:\\Anubhav\\vdt_backend\\GMFL_12_Inch_Desktop\\Components\\Configs\\config_12_inch.py'>
+✅ Config initialized → project_id='quantum-theme-334609' | cfg.pipe_thickness=7.1
+✅ Config loaded for 12 Inch: <module 'GMFL_12_Inch_Desktop.Components.Configs.config_12_inch' from 'D:\\Anubhav\\vdt_backend\\GMFL_12_Inch_Desktop\\Components\\Configs\\config_12_inch.py'>
+✅ Load Data button enabled.
+✅ Selected Project Inch: 12 Inch
+🔹 Load Data clicked!
+✅ Projects fetched: ['GMFL_PETROFAC_oil_Mainrun_18-03-2025', 'GMFL_PETROFAC_water_Mainrun_03-03-2025', 'GMFL_ONGC_Mainrun_22-02-2025', 'GMFL_12inch_04-02-2025_PTT(6)', 'GMFL_12inch_22-01-2025_PTT(6)', 'GMFL_12inch_24-01-2025_PTT(3)', 'GMFL_12inch_28-01-2025_PTT(3)', 'GMFL_12inch_28-01-2025_PTT(2)', 'GMFL_12inch_28-01-2025_PTT(1)', 'GMFL_12inch_24-01-2025_PTT(2)', 'GMFL_12inch_24-01-2025_PTT(1)', 'GMFL_PTT_03-05-2024_PETROFAC', 'GMFL_PTT_02-05-2024', 'GMFL_HPCL_12inch', 'GMFL_12inch_PTT_08.11.23', 'GMFL_12inch_PTT_2', 'GMFL_12inch_PTT_', 'GMFL_12inch_PTT_30.08.23', 'GMFL_12inch_PTT_19.08.23(4)', 'GMFL_12inch_PTT_19.08.23(2)', 'GMFL_12inch_PTT_17.08.23(3)', 'GMFL_12inch_PTT_17.08.23(2)', 'GMFL_12inch_PTT_14.08.23']
+✅ Selected Project: GMFL_12inch_24-01-2025_PTT(3)
+📂 Loading project: GMFL_12inch_24-01-2025_PTT(3)
+ pipetally inside init: None
+✅ Loaded config: <module 'GMFL_12_Inch_Desktop.Components.Configs.config_12_inch' from 'D:\\Anubhav\\vdt_backend\\GMFL_12_Inch_Desktop\\Components\\Configs\\config_12_inch.py'>
+✅ Config initialized → project_id='quantum-theme-334609' | cfg.pipe_thickness=7.1
+ inside updatabe tab: 7.1
+ insinde tab3 pipetally path: None
+inside continue tab: 7.1
+Pipetally loaded: C:/Users/admin/Downloads/Pipe_Tally_8inch (1).xlsx
+ grapthtab pipetally (saved version0: C:/Users/admin/Downloads/Pipe_Tally_8inch (1).xlsx
+GraphTab pipetally (live): C:/Users/admin/Downloads/Pipe_Tally_8inch (1).xlsx
+GraphTab created and locked.
+Graph waiting… weld: False pipe: False pipetally: True
+weld_id_list: ['2', '3']
+DEBUG → weld_loaded: True pipe_loaded: False
+⏳ Not enabling yet…
+Graph nd heatmap waiting… weld: True pipe: False pipetally: True
+pipe_id_list: ['1', '2', '3', '4']
+DEBUG → weld_loaded: True pipe_loaded: True
+✅ Tabs 4–7 ENABLED
+ heatmap_index : 6
+Graph Tab and heatmap ENABLED
+Pre graph analysis called 27/11/2025 11:18:58
+File not exist 27/11/2025 11:18:58
+Created folder: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\ClockDataFrames/GMFL_12inch_24-01-2025_PTT(3) 27/11/2025 11:18:58
+Created folder: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\DataFrames1/GMFL_12inch_24-01-2025_PTT(3) 27/11/2025 11:18:58
+2
+13630 28787
+⏳[1] Start building first-query SQL 27/11/2025 11:18:58
+🚀[2] Start sending first query (Storage API) 27/11/2025 11:18:58
+📥[3] Start to_dataframe() for first query 27/11/2025 11:19:00
+📤[4] results fetched → 15156 rows 27/11/2025 11:19:05
+🧱[5] Creating df_main 27/11/2025 11:19:05
+🧩[6] Expanding HALL_DATA 27/11/2025 11:19:05
+🧮[7] Applying reference subtraction 27/11/2025 11:19:14
+📘[8] First-query data prepared 27/11/2025 11:19:14
+⏳[9] Start building prox-query SQL 27/11/2025 11:19:14
+🚀[10] Start sending prox query (Storage API) 27/11/2025 11:19:14
+📥[11] Start to_dataframe() for prox query 27/11/2025 11:19:15
+📤[12] results_1 fetched → 15156 rows 27/11/2025 11:19:18
+🧩[13] Expanding PROX_DATA 27/11/2025 11:19:18
+📘[14] Proximity expansion complete 27/11/2025 11:19:21
+🔁[15] Restoring original variables 27/11/2025 11:19:21
+🔗[16] Merging df_main + prox_df 27/11/2025 11:19:21
+📘[17] Merge complete 27/11/2025 11:19:21
+💾[18] Saving pickle file 27/11/2025 11:19:21
+✅[19] Saved → D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\DataFrames1/GMFL_12inch_24-01-2025_PTT(3)/2.pkl 27/11/2025 11:19:21
+Calculating sigma thresholds using original proven method...
+Succesfully saved to clock pickle file 27/11/2025 11:19:27
+Performing clustering to detect defect regions...
+Calculating threshold values for defect validation...
+Base threshold calculated: 51732
+Processing defects with 3-part length classification...
+------ start of iteration ------ 27/11/2025 11:19:33
+Row fetched 27/11/2025 11:19:33
+Creating submatrix 27/11/2025 11:19:33
+Applying to_numeric on submatrix 27/11/2025 11:19:33
+Computing two_d_list 27/11/2025 11:19:33
+Calculating max/min 27/11/2025 11:19:33
+Calculating length_percent 27/11/2025 11:19:33
+Adaptive sigma refinement 27/11/2025 11:19:33
+Valid column loop 27/11/2025 11:19:33
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:33
+Defect 1: Length=7.7mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:33
+Running compute_depth 27/11/2025 11:19:33
+Computing max_index 27/11/2025 11:19:33
+Calculating start/end oddo + speed 27/11/2025 11:19:33
+Internal/external detection 27/11/2025 11:19:33
+Absolute + upstream distance calc 27/11/2025 11:19:33
+Breadth() initial width calc 27/11/2025 11:19:33
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:33
+Orientation calculation 27/11/2025 11:19:33
+Replace first column 27/11/2025 11:19:33
+Interpolating modified df 27/11/2025 11:19:33
+Running process_submatrix 27/11/2025 11:19:34
+width_1_only 18
+width_0_yes 37
+Breadth() final width calc 27/11/2025 11:19:34
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:34
+✓ Valid defect: depth=4%, width=41.400000000000006mm, length=10.951986754966924mm
+Appending defect to list 27/11/2025 11:19:34
+Adding heatmap annotation + rectangle 27/11/2025 11:19:34
+Row fetched 27/11/2025 11:19:34
+Creating submatrix 27/11/2025 11:19:34
+Applying to_numeric on submatrix 27/11/2025 11:19:34
+Computing two_d_list 27/11/2025 11:19:34
+Calculating max/min 27/11/2025 11:19:34
+Calculating length_percent 27/11/2025 11:19:34
+Adaptive sigma refinement 27/11/2025 11:19:34
+Valid column loop 27/11/2025 11:19:34
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 9 columns passed adaptive threshold
+✗ Defect rejected: Only 10 columns passed adaptive threshold
+✗ Defect rejected: Only 11 columns passed adaptive threshold
+✗ Defect rejected: Only 12 columns passed adaptive threshold
+✗ Defect rejected: Only 13 columns passed adaptive threshold
+✗ Defect rejected: Only 14 columns passed adaptive threshold
+✗ Defect rejected: Only 15 columns passed adaptive threshold
+✗ Defect rejected: Only 16 columns passed adaptive threshold
+✗ Defect rejected: Only 17 columns passed adaptive threshold
+✗ Defect rejected: Only 18 columns passed adaptive threshold
+✗ Defect rejected: Only 19 columns passed adaptive threshold
+✗ Defect rejected: Only 20 columns passed adaptive threshold
+✗ Defect rejected: Only 21 columns passed adaptive threshold
+✗ Defect rejected: Only 22 columns passed adaptive threshold
+✗ Defect rejected: Only 23 columns passed adaptive threshold
+✗ Defect rejected: Only 24 columns passed adaptive threshold
+✗ Defect rejected: Only 25 columns passed adaptive threshold
+✗ Defect rejected: Only 26 columns passed adaptive threshold
+✗ Defect rejected: Only 27 columns passed adaptive threshold
+✗ Defect rejected: Only 28 columns passed adaptive threshold
+✗ Defect rejected: Only 29 columns passed adaptive threshold
+✗ Defect rejected: Only 30 columns passed adaptive threshold
+✗ Defect rejected: Only 30 columns passed adaptive threshold
+✗ Defect rejected: Only 31 columns passed adaptive threshold
+✗ Defect rejected: Only 32 columns passed adaptive threshold
+✗ Defect rejected: Only 33 columns passed adaptive threshold
+✗ Defect rejected: Only 34 columns passed adaptive threshold
+✗ Defect rejected: Only 35 columns passed adaptive threshold
+✗ Defect rejected: Only 36 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:34
+Defect 2: Length=247.7mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:34
+Interpolating modified df 27/11/2025 11:19:34
+Running process_submatrix 27/11/2025 11:19:34
+width_1_only 20
+width_0_yes 38
+Breadth() final width calc 27/11/2025 11:19:34
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:34
+✓ Valid defect: depth=7%, width=818.2000000000016mm, length=323.92120710415406mm
+Appending defect to list 27/11/2025 11:19:34
+Adding heatmap annotation + rectangle 27/11/2025 11:19:34
+Row fetched 27/11/2025 11:19:34
+Creating submatrix 27/11/2025 11:19:34
+Applying to_numeric on submatrix 27/11/2025 11:19:34
+Computing two_d_list 27/11/2025 11:19:34
+Calculating max/min 27/11/2025 11:19:34
+Calculating length_percent 27/11/2025 11:19:34
+Adaptive sigma refinement 27/11/2025 11:19:34
+Valid column loop 27/11/2025 11:19:34
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 9 columns passed adaptive threshold
+✗ Defect rejected: Only 10 columns passed adaptive threshold
+✗ Defect rejected: Only 11 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:34
+Defect 3: Length=17.8mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:34
+Running compute_depth 27/11/2025 11:19:34
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:34
+Calculating start/end oddo + speed 27/11/2025 11:19:34
+Internal/external detection 27/11/2025 11:19:34
+Absolute + upstream distance calc 27/11/2025 11:19:34
+Breadth() initial width calc 27/11/2025 11:19:34
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:34
+Orientation calculation 27/11/2025 11:19:34
+Replace first column 27/11/2025 11:19:34
+Interpolating modified df 27/11/2025 11:19:34
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 174
+width_0_yes 255
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✗ Defect rejected: max_value=56725 vs threshold=25866.0
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+Printing defect basic info 27/11/2025 11:19:35
+Defect 3: Length=0.4mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✗ Defect rejected: max_value=51924 vs threshold=43972.2
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:35
+Defect 3: Length=1.2mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 5
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✗ Defect rejected: max_value=55393 vs threshold=31039.199999999997
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+Printing defect basic info 27/11/2025 11:19:35
+Defect 3: Length=2.8mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✓ Valid defect: depth=2%, width=26.2mm, length=4.375mm
+Appending defect to list 27/11/2025 11:19:35
+Adding heatmap annotation + rectangle 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+Printing defect basic info 27/11/2025 11:19:35
+Defect 4: Length=2.5mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✓ Valid defect: depth=10%, width=4.6mm, length=3.164206642066347mm
+Appending defect to list 27/11/2025 11:19:35
+Adding heatmap annotation + rectangle 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:35
+Defect 5: Length=20.0mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 13
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✓ Valid defect: depth=11%, width=35.4mm, length=26.448863636363512mm
+Appending defect to list 27/11/2025 11:19:35
+Adding heatmap annotation + rectangle 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:35
+Defect 6: Length=22.7mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 38
+width_0_yes 74
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✓ Valid defect: depth=6%, width=81.4mm, length=30.16098484848476mm
+Appending defect to list 27/11/2025 11:19:35
+Adding heatmap annotation + rectangle 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:35
+Defect 7: Length=46.6mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:35
+width_1_only 33
+width_0_yes 61
+Breadth() final width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:35
+✓ Valid defect: depth=9%, width=113.59999999999998mm, length=62.172266139657495mm
+Appending defect to list 27/11/2025 11:19:35
+Adding heatmap annotation + rectangle 27/11/2025 11:19:35
+Row fetched 27/11/2025 11:19:35
+Creating submatrix 27/11/2025 11:19:35
+Applying to_numeric on submatrix 27/11/2025 11:19:35
+Computing two_d_list 27/11/2025 11:19:35
+Calculating max/min 27/11/2025 11:19:35
+Calculating length_percent 27/11/2025 11:19:35
+Adaptive sigma refinement 27/11/2025 11:19:35
+Valid column loop 27/11/2025 11:19:35
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:35
+Defect 8: Length=32.7mm, Class=Large (30-40%), Threshold=56905.2
+✓ Defect accepted with Large (30-40%) settings
+Calculating depth_old 27/11/2025 11:19:35
+Running compute_depth 27/11/2025 11:19:35
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:35
+Calculating start/end oddo + speed 27/11/2025 11:19:35
+Internal/external detection 27/11/2025 11:19:35
+Absolute + upstream distance calc 27/11/2025 11:19:35
+Breadth() initial width calc 27/11/2025 11:19:35
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:35
+Orientation calculation 27/11/2025 11:19:35
+Replace first column 27/11/2025 11:19:35
+Interpolating modified df 27/11/2025 11:19:35
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 116
+width_0_yes 123
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=5%, width=127.39999999999998mm, length=43.25139986824797mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+Printing defect basic info 27/11/2025 11:19:36
+Defect 9: Length=1.2mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 5
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=2%, width=13.799999999999999mm, length=1.5909090909090082mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+Printing defect basic info 27/11/2025 11:19:36
+Defect 10: Length=0.4mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 5
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=4%, width=4.6mm, length=1.1931818181817562mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+Printing defect basic info 27/11/2025 11:19:36
+Defect 11: Length=1.2mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 5
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=5%, width=4.6mm, length=1.5909090909090082mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 9 columns passed adaptive threshold
+✗ Defect rejected: Only 10 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:36
+Defect 12: Length=43.6mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 2
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=4%, width=236.39999999999986mm, length=56.908143939393995mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+Printing defect basic info 27/11/2025 11:19:36
+Defect 13: Length=0.4mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 3
+width_0_yes 3
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✗ Defect rejected: max_value=52036 vs threshold=43972.2
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:36
+Defect 13: Length=1.2mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 14
+width_0_yes 30
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✗ Defect rejected: max_value=55817 vs threshold=31039.199999999997
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:36
+Defect 13: Length=3.6mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 7
+width_0_yes 7
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=4%, width=18.4mm, length=5.1704545454547315mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+Printing defect basic info 27/11/2025 11:19:36
+Defect 14: Length=1.1mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:36
+width_1_only 2
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:36
+✓ Valid defect: depth=3%, width=9.2mm, length=1.822916666666515mm
+Appending defect to list 27/11/2025 11:19:36
+Adding heatmap annotation + rectangle 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Row fetched 27/11/2025 11:19:36
+Creating submatrix 27/11/2025 11:19:36
+Applying to_numeric on submatrix 27/11/2025 11:19:36
+Computing two_d_list 27/11/2025 11:19:36
+Calculating max/min 27/11/2025 11:19:36
+Calculating length_percent 27/11/2025 11:19:36
+Adaptive sigma refinement 27/11/2025 11:19:36
+Valid column loop 27/11/2025 11:19:36
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:36
+Defect 15: Length=15.7mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:36
+Running compute_depth 27/11/2025 11:19:36
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:36
+Calculating start/end oddo + speed 27/11/2025 11:19:36
+Internal/external detection 27/11/2025 11:19:36
+Absolute + upstream distance calc 27/11/2025 11:19:36
+Breadth() initial width calc 27/11/2025 11:19:36
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:36
+Orientation calculation 27/11/2025 11:19:36
+Replace first column 27/11/2025 11:19:36
+Interpolating modified df 27/11/2025 11:19:36
+Running process_submatrix 27/11/2025 11:19:37
+width_1_only 103
+width_0_yes 109
+Breadth() final width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:37
+✓ Valid defect: depth=3%, width=108.99999999999997mm, length=20.842013888888914mm
+Appending defect to list 27/11/2025 11:19:37
+Adding heatmap annotation + rectangle 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Creating submatrix 27/11/2025 11:19:37
+Applying to_numeric on submatrix 27/11/2025 11:19:37
+Computing two_d_list 27/11/2025 11:19:37
+Calculating max/min 27/11/2025 11:19:37
+Calculating length_percent 27/11/2025 11:19:37
+Adaptive sigma refinement 27/11/2025 11:19:37
+Valid column loop 27/11/2025 11:19:37
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:37
+Defect 16: Length=9.3mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:37
+Running compute_depth 27/11/2025 11:19:37
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:37
+Calculating start/end oddo + speed 27/11/2025 11:19:37
+Internal/external detection 27/11/2025 11:19:37
+Absolute + upstream distance calc 27/11/2025 11:19:37
+Breadth() initial width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:37
+Orientation calculation 27/11/2025 11:19:37
+Replace first column 27/11/2025 11:19:37
+Interpolating modified df 27/11/2025 11:19:37
+Running process_submatrix 27/11/2025 11:19:37
+width_1_only 56
+width_0_yes 69
+Breadth() final width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:37
+✓ Valid defect: depth=2%, width=86.0mm, length=12.491776315789593mm
+Appending defect to list 27/11/2025 11:19:37
+Adding heatmap annotation + rectangle 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Creating submatrix 27/11/2025 11:19:37
+Applying to_numeric on submatrix 27/11/2025 11:19:37
+Computing two_d_list 27/11/2025 11:19:37
+Calculating max/min 27/11/2025 11:19:37
+Calculating length_percent 27/11/2025 11:19:37
+Adaptive sigma refinement 27/11/2025 11:19:37
+Valid column loop 27/11/2025 11:19:37
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:37
+Defect 17: Length=21.6mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:37
+Running compute_depth 27/11/2025 11:19:37
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:37
+Calculating start/end oddo + speed 27/11/2025 11:19:37
+Internal/external detection 27/11/2025 11:19:37
+Absolute + upstream distance calc 27/11/2025 11:19:37
+Breadth() initial width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:37
+Orientation calculation 27/11/2025 11:19:37
+Replace first column 27/11/2025 11:19:37
+Interpolating modified df 27/11/2025 11:19:37
+Running process_submatrix 27/11/2025 11:19:37
+width_1_only 90
+width_0_yes 100
+Breadth() final width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:37
+✓ Valid defect: depth=4%, width=99.79999999999998mm, length=27.518449030644206mm
+Appending defect to list 27/11/2025 11:19:37
+Adding heatmap annotation + rectangle 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Creating submatrix 27/11/2025 11:19:37
+Applying to_numeric on submatrix 27/11/2025 11:19:37
+Computing two_d_list 27/11/2025 11:19:37
+Calculating max/min 27/11/2025 11:19:37
+Calculating length_percent 27/11/2025 11:19:37
+Adaptive sigma refinement 27/11/2025 11:19:37
+Valid column loop 27/11/2025 11:19:37
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:37
+Defect 18: Length=5.9mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:37
+Running compute_depth 27/11/2025 11:19:37
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:37
+Calculating start/end oddo + speed 27/11/2025 11:19:37
+Internal/external detection 27/11/2025 11:19:37
+Absolute + upstream distance calc 27/11/2025 11:19:37
+Breadth() initial width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:37
+Orientation calculation 27/11/2025 11:19:37
+Replace first column 27/11/2025 11:19:37
+Interpolating modified df 27/11/2025 11:19:37
+Running process_submatrix 27/11/2025 11:19:37
+width_1_only 13
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:37
+✓ Valid defect: depth=5%, width=27.6mm, length=8.684701492536988mm
+Appending defect to list 27/11/2025 11:19:37
+Adding heatmap annotation + rectangle 27/11/2025 11:19:37
+Row fetched 27/11/2025 11:19:37
+Creating submatrix 27/11/2025 11:19:37
+Applying to_numeric on submatrix 27/11/2025 11:19:37
+Computing two_d_list 27/11/2025 11:19:37
+Calculating max/min 27/11/2025 11:19:37
+Calculating length_percent 27/11/2025 11:19:37
+Adaptive sigma refinement 27/11/2025 11:19:37
+Valid column loop 27/11/2025 11:19:37
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:37
+Defect 19: Length=14.2mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:37
+Running compute_depth 27/11/2025 11:19:37
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:37
+Calculating start/end oddo + speed 27/11/2025 11:19:37
+Internal/external detection 27/11/2025 11:19:37
+Absolute + upstream distance calc 27/11/2025 11:19:37
+Breadth() initial width calc 27/11/2025 11:19:37
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:37
+Orientation calculation 27/11/2025 11:19:37
+Replace first column 27/11/2025 11:19:37
+Interpolating modified df 27/11/2025 11:19:37
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 18
+width_0_yes 18
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✓ Valid defect: depth=8%, width=36.8mm, length=18.74067164179087mm
+Appending defect to list 27/11/2025 11:19:38
+Adding heatmap annotation + rectangle 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+Printing defect basic info 27/11/2025 11:19:38
+Defect 20: Length=2.9mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 3
+width_0_yes 3
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✓ Valid defect: depth=4%, width=13.799999999999999mm, length=3.75mm
+Appending defect to list 27/11/2025 11:19:38
+Adding heatmap annotation + rectangle 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:38
+Defect 21: Length=3.7mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 5
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✓ Valid defect: depth=4%, width=18.4mm, length=5.380067567567494mm
+Appending defect to list 27/11/2025 11:19:38
+Adding heatmap annotation + rectangle 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+Printing defect basic info 27/11/2025 11:19:38
+Defect 22: Length=2.1mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✗ Defect rejected: max_value=56141 vs threshold=31039.199999999997
+Row fetched 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:38
+Defect 22: Length=14.3mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 23
+width_0_yes 49
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✓ Valid defect: depth=6%, width=53.8mm, length=18.875786163521752mm
+Appending defect to list 27/11/2025 11:19:38
+Adding heatmap annotation + rectangle 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:38
+Defect 23: Length=14.5mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:38
+width_1_only 159
+width_0_yes 169
+Breadth() final width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:38
+✓ Valid defect: depth=2%, width=173.39999999999992mm, length=19.334896947306333mm
+Appending defect to list 27/11/2025 11:19:38
+Adding heatmap annotation + rectangle 27/11/2025 11:19:38
+Row fetched 27/11/2025 11:19:38
+Creating submatrix 27/11/2025 11:19:38
+Applying to_numeric on submatrix 27/11/2025 11:19:38
+Computing two_d_list 27/11/2025 11:19:38
+Calculating max/min 27/11/2025 11:19:38
+Calculating length_percent 27/11/2025 11:19:38
+Adaptive sigma refinement 27/11/2025 11:19:38
+Valid column loop 27/11/2025 11:19:38
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:38
+Defect 24: Length=21.2mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:38
+Running compute_depth 27/11/2025 11:19:38
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:38
+Calculating start/end oddo + speed 27/11/2025 11:19:38
+Internal/external detection 27/11/2025 11:19:38
+Absolute + upstream distance calc 27/11/2025 11:19:38
+Breadth() initial width calc 27/11/2025 11:19:38
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:38
+Orientation calculation 27/11/2025 11:19:38
+Replace first column 27/11/2025 11:19:38
+Interpolating modified df 27/11/2025 11:19:38
+Running process_submatrix 27/11/2025 11:19:39
+width_1_only 41
+width_0_yes 77
+Breadth() final width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:39
+✓ Valid defect: depth=5%, width=81.4mm, length=28.436649329185457mm
+Appending defect to list 27/11/2025 11:19:39
+Adding heatmap annotation + rectangle 27/11/2025 11:19:39
+Row fetched 27/11/2025 11:19:39
+Row fetched 27/11/2025 11:19:39
+Creating submatrix 27/11/2025 11:19:39
+Applying to_numeric on submatrix 27/11/2025 11:19:39
+Computing two_d_list 27/11/2025 11:19:39
+Calculating max/min 27/11/2025 11:19:39
+Calculating length_percent 27/11/2025 11:19:39
+Adaptive sigma refinement 27/11/2025 11:19:39
+Valid column loop 27/11/2025 11:19:39
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:39
+Defect 25: Length=5.4mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:39
+Running compute_depth 27/11/2025 11:19:39
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:39
+Calculating start/end oddo + speed 27/11/2025 11:19:39
+Internal/external detection 27/11/2025 11:19:39
+Absolute + upstream distance calc 27/11/2025 11:19:39
+Breadth() initial width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:39
+Orientation calculation 27/11/2025 11:19:39
+Replace first column 27/11/2025 11:19:39
+Interpolating modified df 27/11/2025 11:19:39
+Running process_submatrix 27/11/2025 11:19:39
+width_1_only 6
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:39
+✓ Valid defect: depth=3%, width=35.4mm, length=7.115861364961802mm
+Appending defect to list 27/11/2025 11:19:39
+Adding heatmap annotation + rectangle 27/11/2025 11:19:39
+Row fetched 27/11/2025 11:19:39
+Row fetched 27/11/2025 11:19:39
+Creating submatrix 27/11/2025 11:19:39
+Applying to_numeric on submatrix 27/11/2025 11:19:39
+Computing two_d_list 27/11/2025 11:19:39
+Calculating max/min 27/11/2025 11:19:39
+Calculating length_percent 27/11/2025 11:19:39
+Adaptive sigma refinement 27/11/2025 11:19:39
+Valid column loop 27/11/2025 11:19:39
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:39
+Defect 26: Length=21.0mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:39
+Running compute_depth 27/11/2025 11:19:39
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:39
+Calculating start/end oddo + speed 27/11/2025 11:19:39
+Internal/external detection 27/11/2025 11:19:39
+Absolute + upstream distance calc 27/11/2025 11:19:39
+Breadth() initial width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:39
+Orientation calculation 27/11/2025 11:19:39
+Replace first column 27/11/2025 11:19:39
+Interpolating modified df 27/11/2025 11:19:39
+Running process_submatrix 27/11/2025 11:19:39
+width_1_only 72
+width_0_yes 83
+Breadth() final width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:39
+✓ Valid defect: depth=4%, width=104.39999999999999mm, length=28.36409395973169mm
+Appending defect to list 27/11/2025 11:19:39
+Adding heatmap annotation + rectangle 27/11/2025 11:19:39
+Row fetched 27/11/2025 11:19:39
+Creating submatrix 27/11/2025 11:19:39
+Applying to_numeric on submatrix 27/11/2025 11:19:39
+Computing two_d_list 27/11/2025 11:19:39
+Calculating max/min 27/11/2025 11:19:39
+Calculating length_percent 27/11/2025 11:19:39
+Adaptive sigma refinement 27/11/2025 11:19:39
+Valid column loop 27/11/2025 11:19:39
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:39
+Defect 27: Length=38.9mm, Class=Large (30-40%), Threshold=56905.2
+✓ Defect accepted with Large (30-40%) settings
+Calculating depth_old 27/11/2025 11:19:39
+Running compute_depth 27/11/2025 11:19:39
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:39
+Calculating start/end oddo + speed 27/11/2025 11:19:39
+Internal/external detection 27/11/2025 11:19:39
+Absolute + upstream distance calc 27/11/2025 11:19:39
+Breadth() initial width calc 27/11/2025 11:19:39
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:39
+Orientation calculation 27/11/2025 11:19:39
+Replace first column 27/11/2025 11:19:39
+Interpolating modified df 27/11/2025 11:19:39
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 89
+width_0_yes 100
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=8%, width=104.39999999999999mm, length=51.40840900118337mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 28: Length=7.0mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:40
+Running compute_depth 27/11/2025 11:19:40
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:40
+Calculating start/end oddo + speed 27/11/2025 11:19:40
+Internal/external detection 27/11/2025 11:19:40
+Absolute + upstream distance calc 27/11/2025 11:19:40
+Breadth() initial width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:40
+Orientation calculation 27/11/2025 11:19:40
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 7
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=4%, width=35.4mm, length=9.043624161073694mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 29: Length=8.6mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:40
+Running compute_depth 27/11/2025 11:19:40
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:40
+Calculating start/end oddo + speed 27/11/2025 11:19:40
+Internal/external detection 27/11/2025 11:19:40
+Absolute + upstream distance calc 27/11/2025 11:19:40
+Breadth() initial width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:40
+Orientation calculation 27/11/2025 11:19:40
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 23
+width_0_yes 23
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=6%, width=32.2mm, length=11.92114093959708mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 9 columns passed adaptive threshold
+✗ Defect rejected: Only 10 columns passed adaptive threshold
+✗ Defect rejected: Only 11 columns passed adaptive threshold
+✗ Defect rejected: Only 12 columns passed adaptive threshold
+✗ Defect rejected: Only 13 columns passed adaptive threshold
+✗ Defect rejected: Only 14 columns passed adaptive threshold
+✗ Defect rejected: Only 15 columns passed adaptive threshold
+✗ Defect rejected: Only 16 columns passed adaptive threshold
+✗ Defect rejected: Only 17 columns passed adaptive threshold
+✗ Defect rejected: Only 18 columns passed adaptive threshold
+✗ Defect rejected: Only 19 columns passed adaptive threshold
+✗ Defect rejected: Only 20 columns passed adaptive threshold
+✗ Defect rejected: Only 21 columns passed adaptive threshold
+✗ Defect rejected: Only 22 columns passed adaptive threshold
+✗ Defect rejected: Only 23 columns passed adaptive threshold
+✗ Defect rejected: Only 24 columns passed adaptive threshold
+✗ Defect rejected: Only 25 columns passed adaptive threshold
+✗ Defect rejected: Only 26 columns passed adaptive threshold
+✗ Defect rejected: Only 27 columns passed adaptive threshold
+✗ Defect rejected: Only 28 columns passed adaptive threshold
+✗ Defect rejected: Only 29 columns passed adaptive threshold
+✗ Defect rejected: Only 30 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 30: Length=42.3mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 25
+width_0_yes 32
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✗ Defect rejected: max_value=60073 vs threshold=62078.399999999994
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 30: Length=4.5mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:40
+Running compute_depth 27/11/2025 11:19:40
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:40
+Calculating start/end oddo + speed 27/11/2025 11:19:40
+Internal/external detection 27/11/2025 11:19:40
+Absolute + upstream distance calc 27/11/2025 11:19:40
+Breadth() initial width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:40
+Orientation calculation 27/11/2025 11:19:40
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 7
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=3%, width=35.4mm, length=6.166107382549399mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 31: Length=13.6mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:40
+Running compute_depth 27/11/2025 11:19:40
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:40
+Calculating start/end oddo + speed 27/11/2025 11:19:40
+Internal/external detection 27/11/2025 11:19:40
+Absolute + upstream distance calc 27/11/2025 11:19:40
+Breadth() initial width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:40
+Orientation calculation 27/11/2025 11:19:40
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 25
+width_0_yes 32
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=8%, width=36.800000000000004mm, length=18.08724832214648mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:40
+Defect 32: Length=2.9mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:40
+Running compute_depth 27/11/2025 11:19:40
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:40
+Calculating start/end oddo + speed 27/11/2025 11:19:40
+Internal/external detection 27/11/2025 11:19:40
+Absolute + upstream distance calc 27/11/2025 11:19:40
+Breadth() initial width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:40
+Orientation calculation 27/11/2025 11:19:40
+Replace first column 27/11/2025 11:19:40
+Interpolating modified df 27/11/2025 11:19:40
+Running process_submatrix 27/11/2025 11:19:40
+width_1_only 5
+width_0_yes 5
+Breadth() final width calc 27/11/2025 11:19:40
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:40
+✓ Valid defect: depth=2%, width=35.4mm, length=3.6996644295304577mm
+Appending defect to list 27/11/2025 11:19:40
+Adding heatmap annotation + rectangle 27/11/2025 11:19:40
+Row fetched 27/11/2025 11:19:40
+Creating submatrix 27/11/2025 11:19:40
+Applying to_numeric on submatrix 27/11/2025 11:19:40
+Computing two_d_list 27/11/2025 11:19:40
+Calculating max/min 27/11/2025 11:19:40
+Calculating length_percent 27/11/2025 11:19:40
+Adaptive sigma refinement 27/11/2025 11:19:40
+Valid column loop 27/11/2025 11:19:40
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 33: Length=5.3mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 10
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=3%, width=35.4mm, length=6.988255033556925mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+Printing defect basic info 27/11/2025 11:19:41
+Defect 34: Length=1.3mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 5
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=2%, width=13.799999999999999mm, length=1.725352112676319mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 35: Length=52.7mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 5
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=28%, width=36.8mm, length=69.8527973395926mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 36: Length=56.4mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 7
+width_0_yes 12
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=11%, width=104.39999999999998mm, length=74.32157671513778mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 37: Length=25.6mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 7
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=15%, width=35.4mm, length=33.36017981972009mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 38: Length=20.7mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 72
+width_0_yes 72
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=6%, width=72.2mm, length=27.98841059602637mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 39: Length=8.5mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 32
+width_0_yes 32
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=4%, width=50.60000000000001mm, length=11.76324503311298mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 40: Length=10.1mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:41
+width_1_only 13
+width_0_yes 22
+Breadth() final width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:41
+✓ Valid defect: depth=8%, width=27.6mm, length=13.713385124809065mm
+Appending defect to list 27/11/2025 11:19:41
+Adding heatmap annotation + rectangle 27/11/2025 11:19:41
+Row fetched 27/11/2025 11:19:41
+Creating submatrix 27/11/2025 11:19:41
+Applying to_numeric on submatrix 27/11/2025 11:19:41
+Computing two_d_list 27/11/2025 11:19:41
+Calculating max/min 27/11/2025 11:19:41
+Calculating length_percent 27/11/2025 11:19:41
+Adaptive sigma refinement 27/11/2025 11:19:41
+Valid column loop 27/11/2025 11:19:41
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:41
+Defect 41: Length=13.7mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:41
+Running compute_depth 27/11/2025 11:19:41
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:41
+Calculating start/end oddo + speed 27/11/2025 11:19:41
+Internal/external detection 27/11/2025 11:19:41
+Absolute + upstream distance calc 27/11/2025 11:19:41
+Breadth() initial width calc 27/11/2025 11:19:41
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:41
+Orientation calculation 27/11/2025 11:19:41
+Replace first column 27/11/2025 11:19:41
+Interpolating modified df 27/11/2025 11:19:41
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 51
+width_0_yes 67
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=3%, width=86.0mm, length=18.11290117167573mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 42: Length=25.4mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 17
+width_0_yes 32
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=19%, width=27.6mm, length=33.042763157895024mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 43: Length=2.8mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 7
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=2%, width=35.4mm, length=4.029605263156554mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 44: Length=0.4mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 6
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✗ Defect rejected: max_value=54443 vs threshold=43972.2
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 44: Length=7.7mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 8
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=4%, width=35.4mm, length=9.671052631578277mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 45: Length=18.9mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 52
+width_0_yes 53
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=7%, width=58.400000000000006mm, length=24.927990745457464mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:42
+Creating submatrix 27/11/2025 11:19:42
+Applying to_numeric on submatrix 27/11/2025 11:19:42
+Computing two_d_list 27/11/2025 11:19:42
+Calculating max/min 27/11/2025 11:19:42
+Calculating length_percent 27/11/2025 11:19:42
+Adaptive sigma refinement 27/11/2025 11:19:42
+Valid column loop 27/11/2025 11:19:42
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:42
+Defect 46: Length=10.1mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:42
+Running compute_depth 27/11/2025 11:19:42
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:42
+Calculating start/end oddo + speed 27/11/2025 11:19:42
+Internal/external detection 27/11/2025 11:19:42
+Absolute + upstream distance calc 27/11/2025 11:19:42
+Breadth() initial width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:42
+Orientation calculation 27/11/2025 11:19:42
+Replace first column 27/11/2025 11:19:42
+Interpolating modified df 27/11/2025 11:19:42
+Running process_submatrix 27/11/2025 11:19:42
+width_1_only 47
+width_0_yes 66
+Breadth() final width calc 27/11/2025 11:19:42
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:42
+✓ Valid defect: depth=3%, width=86.0mm, length=13.72292556436878mm
+Appending defect to list 27/11/2025 11:19:42
+Adding heatmap annotation + rectangle 27/11/2025 11:19:42
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:43
+Defect 47: Length=11.9mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:43
+Running compute_depth 27/11/2025 11:19:43
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:43
+Calculating start/end oddo + speed 27/11/2025 11:19:43
+Internal/external detection 27/11/2025 11:19:43
+Absolute + upstream distance calc 27/11/2025 11:19:43
+Breadth() initial width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:43
+Orientation calculation 27/11/2025 11:19:43
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:43
+width_1_only 14
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:43
+✓ Valid defect: depth=11%, width=23.0mm, length=16.031879194630164mm
+Appending defect to list 27/11/2025 11:19:43
+Adding heatmap annotation + rectangle 27/11/2025 11:19:43
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:43
+Defect 48: Length=17.1mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:43
+Running compute_depth 27/11/2025 11:19:43
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:43
+Calculating start/end oddo + speed 27/11/2025 11:19:43
+Internal/external detection 27/11/2025 11:19:43
+Absolute + upstream distance calc 27/11/2025 11:19:43
+Breadth() initial width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:43
+Orientation calculation 27/11/2025 11:19:43
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:43
+width_1_only 32
+width_0_yes 55
+Breadth() final width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:43
+✓ Valid defect: depth=9%, width=36.800000000000004mm, length=22.06521739130494mm
+Appending defect to list 27/11/2025 11:19:43
+Adding heatmap annotation + rectangle 27/11/2025 11:19:43
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:43
+Defect 49: Length=21.2mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:43
+Running compute_depth 27/11/2025 11:19:43
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:43
+Calculating start/end oddo + speed 27/11/2025 11:19:43
+Internal/external detection 27/11/2025 11:19:43
+Absolute + upstream distance calc 27/11/2025 11:19:43
+Breadth() initial width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:43
+Orientation calculation 27/11/2025 11:19:43
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:43
+width_1_only 33
+width_0_yes 45
+Breadth() final width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:43
+✓ Valid defect: depth=9%, width=49.2mm, length=28.281308258762692mm
+Appending defect to list 27/11/2025 11:19:43
+Adding heatmap annotation + rectangle 27/11/2025 11:19:43
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+Printing defect basic info 27/11/2025 11:19:43
+Defect 50: Length=10.5mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:43
+Running compute_depth 27/11/2025 11:19:43
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:43
+Calculating start/end oddo + speed 27/11/2025 11:19:43
+Internal/external detection 27/11/2025 11:19:43
+Absolute + upstream distance calc 27/11/2025 11:19:43
+Breadth() initial width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:43
+Orientation calculation 27/11/2025 11:19:43
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:43
+width_1_only 6
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:43
+✓ Valid defect: depth=7%, width=30.799999999999997mm, length=14.683219178082254mm
+Appending defect to list 27/11/2025 11:19:43
+Adding heatmap annotation + rectangle 27/11/2025 11:19:43
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:43
+Defect 51: Length=15.4mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:43
+Running compute_depth 27/11/2025 11:19:43
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:43
+Calculating start/end oddo + speed 27/11/2025 11:19:43
+Internal/external detection 27/11/2025 11:19:43
+Absolute + upstream distance calc 27/11/2025 11:19:43
+Breadth() initial width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:43
+Orientation calculation 27/11/2025 11:19:43
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:43
+width_1_only 55
+width_0_yes 69
+Breadth() final width calc 27/11/2025 11:19:43
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:43
+✓ Valid defect: depth=4%, width=86.0mm, length=20.306461489612957mm
+Appending defect to list 27/11/2025 11:19:43
+Adding heatmap annotation + rectangle 27/11/2025 11:19:43
+Row fetched 27/11/2025 11:19:43
+Creating submatrix 27/11/2025 11:19:43
+Applying to_numeric on submatrix 27/11/2025 11:19:43
+Computing two_d_list 27/11/2025 11:19:43
+Calculating max/min 27/11/2025 11:19:43
+Calculating length_percent 27/11/2025 11:19:43
+Adaptive sigma refinement 27/11/2025 11:19:43
+Valid column loop 27/11/2025 11:19:43
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:43
+Defect 52: Length=106.2mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:43
+Interpolating modified df 27/11/2025 11:19:43
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 68
+width_0_yes 86
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=14%, width=164.19999999999993mm, length=140.67927631578914mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Creating submatrix 27/11/2025 11:19:44
+Applying to_numeric on submatrix 27/11/2025 11:19:44
+Computing two_d_list 27/11/2025 11:19:44
+Calculating max/min 27/11/2025 11:19:44
+Calculating length_percent 27/11/2025 11:19:44
+Adaptive sigma refinement 27/11/2025 11:19:44
+Valid column loop 27/11/2025 11:19:44
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:44
+Defect 53: Length=23.1mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:44
+Running compute_depth 27/11/2025 11:19:44
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:44
+Calculating start/end oddo + speed 27/11/2025 11:19:44
+Internal/external detection 27/11/2025 11:19:44
+Absolute + upstream distance calc 27/11/2025 11:19:44
+Breadth() initial width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:44
+Orientation calculation 27/11/2025 11:19:44
+Replace first column 27/11/2025 11:19:44
+Interpolating modified df 27/11/2025 11:19:44
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 10
+width_0_yes 22
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=21%, width=23.0mm, length=31.110612349594703mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Creating submatrix 27/11/2025 11:19:44
+Applying to_numeric on submatrix 27/11/2025 11:19:44
+Computing two_d_list 27/11/2025 11:19:44
+Calculating max/min 27/11/2025 11:19:44
+Calculating length_percent 27/11/2025 11:19:44
+Adaptive sigma refinement 27/11/2025 11:19:44
+Valid column loop 27/11/2025 11:19:44
+Printing defect basic info 27/11/2025 11:19:44
+Defect 54: Length=5.6mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:44
+Running compute_depth 27/11/2025 11:19:44
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:44
+Calculating start/end oddo + speed 27/11/2025 11:19:44
+Internal/external detection 27/11/2025 11:19:44
+Absolute + upstream distance calc 27/11/2025 11:19:44
+Breadth() initial width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:44
+Orientation calculation 27/11/2025 11:19:44
+Replace first column 27/11/2025 11:19:44
+Interpolating modified df 27/11/2025 11:19:44
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 7
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=4%, width=30.799999999999997mm, length=6.901408450704366mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Creating submatrix 27/11/2025 11:19:44
+Applying to_numeric on submatrix 27/11/2025 11:19:44
+Computing two_d_list 27/11/2025 11:19:44
+Calculating max/min 27/11/2025 11:19:44
+Calculating length_percent 27/11/2025 11:19:44
+Adaptive sigma refinement 27/11/2025 11:19:44
+Valid column loop 27/11/2025 11:19:44
+Printing defect basic info 27/11/2025 11:19:44
+Defect 55: Length=4.4mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:44
+Running compute_depth 27/11/2025 11:19:44
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:44
+Calculating start/end oddo + speed 27/11/2025 11:19:44
+Internal/external detection 27/11/2025 11:19:44
+Absolute + upstream distance calc 27/11/2025 11:19:44
+Breadth() initial width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:44
+Orientation calculation 27/11/2025 11:19:44
+Replace first column 27/11/2025 11:19:44
+Interpolating modified df 27/11/2025 11:19:44
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=20%, width=4.6mm, length=5.641447368420813mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Creating submatrix 27/11/2025 11:19:44
+Applying to_numeric on submatrix 27/11/2025 11:19:44
+Computing two_d_list 27/11/2025 11:19:44
+Calculating max/min 27/11/2025 11:19:44
+Calculating length_percent 27/11/2025 11:19:44
+Adaptive sigma refinement 27/11/2025 11:19:44
+Valid column loop 27/11/2025 11:19:44
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:44
+Defect 56: Length=29.4mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:44
+Running compute_depth 27/11/2025 11:19:44
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:44
+Calculating start/end oddo + speed 27/11/2025 11:19:44
+Internal/external detection 27/11/2025 11:19:44
+Absolute + upstream distance calc 27/11/2025 11:19:44
+Breadth() initial width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:44
+Orientation calculation 27/11/2025 11:19:44
+Replace first column 27/11/2025 11:19:44
+Interpolating modified df 27/11/2025 11:19:44
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 20
+width_0_yes 20
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=19%, width=32.2mm, length=38.68421052631584mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:44
+Creating submatrix 27/11/2025 11:19:44
+Applying to_numeric on submatrix 27/11/2025 11:19:44
+Computing two_d_list 27/11/2025 11:19:44
+Calculating max/min 27/11/2025 11:19:44
+Calculating length_percent 27/11/2025 11:19:44
+Adaptive sigma refinement 27/11/2025 11:19:44
+Valid column loop 27/11/2025 11:19:44
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:44
+Defect 57: Length=74.8mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:44
+Interpolating modified df 27/11/2025 11:19:44
+Running process_submatrix 27/11/2025 11:19:44
+width_1_only 10
+width_0_yes 10
+Breadth() final width calc 27/11/2025 11:19:44
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:44
+✓ Valid defect: depth=70%, width=23.0mm, length=98.78482647474266mm
+Appending defect to list 27/11/2025 11:19:44
+Adding heatmap annotation + rectangle 27/11/2025 11:19:44
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+Printing defect basic info 27/11/2025 11:19:45
+Defect 58: Length=9.4mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 8
+width_0_yes 9
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✓ Valid defect: depth=6%, width=30.799999999999997mm, length=12.184649802099557mm
+Appending defect to list 27/11/2025 11:19:45
+Adding heatmap annotation + rectangle 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+Printing defect basic info 27/11/2025 11:19:45
+Defect 59: Length=0.0mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 1
+width_0_yes 1
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✗ Defect rejected: max_value=53923 vs threshold=43972.2
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+Printing defect basic info 27/11/2025 11:19:45
+Defect 59: Length=0.4mm, Class=Below 1%, Threshold=43972.2
+✓ Defect accepted with Below 1% settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 3
+width_0_yes 3
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✗ Defect rejected: max_value=54504 vs threshold=43972.2
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:45
+Defect 59: Length=26.2mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 79
+width_0_yes 86
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✓ Valid defect: depth=6%, width=86.0mm, length=34.239130434782965mm
+Appending defect to list 27/11/2025 11:19:45
+Adding heatmap annotation + rectangle 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:45
+Defect 60: Length=27.8mm, Class=Medium (20-30%), Threshold=51732.0
+✓ Defect accepted with Medium (20-30%) settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 8
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✓ Valid defect: depth=30%, width=18.4mm, length=35.832030028151166mm
+Appending defect to list 27/11/2025 11:19:45
+Adding heatmap annotation + rectangle 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:45
+Defect 61: Length=45.1mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 8
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✓ Valid defect: depth=6%, width=150.39999999999995mm, length=59.267086330934944mm
+Appending defect to list 27/11/2025 11:19:45
+Adding heatmap annotation + rectangle 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:45
+Defect 62: Length=7.7mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:45
+Breadth() initial width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:45
+Orientation calculation 27/11/2025 11:19:45
+Replace first column 27/11/2025 11:19:45
+Interpolating modified df 27/11/2025 11:19:45
+Running process_submatrix 27/11/2025 11:19:45
+width_1_only 15
+width_0_yes 23
+Breadth() final width calc 27/11/2025 11:19:45
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:45
+✓ Valid defect: depth=5%, width=35.4mm, length=10.331325301204743mm
+Appending defect to list 27/11/2025 11:19:45
+Adding heatmap annotation + rectangle 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Row fetched 27/11/2025 11:19:45
+Creating submatrix 27/11/2025 11:19:45
+Applying to_numeric on submatrix 27/11/2025 11:19:45
+Computing two_d_list 27/11/2025 11:19:45
+Calculating max/min 27/11/2025 11:19:45
+Calculating length_percent 27/11/2025 11:19:45
+Adaptive sigma refinement 27/11/2025 11:19:45
+Valid column loop 27/11/2025 11:19:45
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:45
+Defect 63: Length=15.6mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:45
+Running compute_depth 27/11/2025 11:19:45
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:45
+Calculating start/end oddo + speed 27/11/2025 11:19:45
+Internal/external detection 27/11/2025 11:19:45
+Absolute + upstream distance calc 27/11/2025 11:19:46
+Breadth() initial width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:46
+Orientation calculation 27/11/2025 11:19:46
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 25
+width_0_yes 49
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✓ Valid defect: depth=6%, width=53.8mm, length=20.51520270270248mm
+Appending defect to list 27/11/2025 11:19:46
+Adding heatmap annotation + rectangle 27/11/2025 11:19:46
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:46
+Defect 64: Length=32.3mm, Class=Large (30-40%), Threshold=56905.2
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 21
+width_0_yes 32
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✓ Valid defect: depth=16%, width=41.400000000000006mm, length=42.639054886457416mm
+Appending defect to list 27/11/2025 11:19:46
+Adding heatmap annotation + rectangle 27/11/2025 11:19:46
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:46
+Defect 65: Length=17.1mm, Class=Small (10-20%), Threshold=25866.0
+✓ Defect accepted with Small (10-20%) settings
+Calculating depth_old 27/11/2025 11:19:46
+Running compute_depth 27/11/2025 11:19:46
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:46
+Calculating start/end oddo + speed 27/11/2025 11:19:46
+Internal/external detection 27/11/2025 11:19:46
+Absolute + upstream distance calc 27/11/2025 11:19:46
+Breadth() initial width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:46
+Orientation calculation 27/11/2025 11:19:46
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 54
+width_0_yes 82
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✓ Valid defect: depth=4%, width=81.39999999999999mm, length=22.525684931506476mm
+Appending defect to list 27/11/2025 11:19:46
+Adding heatmap annotation + rectangle 27/11/2025 11:19:46
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:46
+Defect 66: Length=4.4mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:46
+Running compute_depth 27/11/2025 11:19:46
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:46
+Calculating start/end oddo + speed 27/11/2025 11:19:46
+Internal/external detection 27/11/2025 11:19:46
+Absolute + upstream distance calc 27/11/2025 11:19:46
+Breadth() initial width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:46
+Orientation calculation 27/11/2025 11:19:46
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 6
+width_0_yes 14
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✓ Valid defect: depth=5%, width=18.4mm, length=5.5681818181819835mm
+Appending defect to list 27/11/2025 11:19:46
+Adding heatmap annotation + rectangle 27/11/2025 11:19:46
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+Printing defect basic info 27/11/2025 11:19:46
+Defect 67: Length=9.6mm, Class=Very Small (1-10%), Threshold=31039.2
+✓ Defect accepted with Very Small (1-10%) settings
+Calculating depth_old 27/11/2025 11:19:46
+Running compute_depth 27/11/2025 11:19:46
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:46
+Calculating start/end oddo + speed 27/11/2025 11:19:46
+Internal/external detection 27/11/2025 11:19:46
+Absolute + upstream distance calc 27/11/2025 11:19:46
+Breadth() initial width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:46
+Orientation calculation 27/11/2025 11:19:46
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 3
+width_0_yes 3
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✓ Valid defect: depth=14%, width=13.799999999999999mm, length=12.798507462686757mm
+Appending defect to list 27/11/2025 11:19:46
+Adding heatmap annotation + rectangle 27/11/2025 11:19:46
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+✗ Defect rejected: Only 8 columns passed adaptive threshold
+✗ Defect rejected: Only 9 columns passed adaptive threshold
+✗ Defect rejected: Only 10 columns passed adaptive threshold
+✗ Defect rejected: Only 11 columns passed adaptive threshold
+✗ Defect rejected: Only 12 columns passed adaptive threshold
+✗ Defect rejected: Only 13 columns passed adaptive threshold
+✗ Defect rejected: Only 14 columns passed adaptive threshold
+✗ Defect rejected: Only 15 columns passed adaptive threshold
+✗ Defect rejected: Only 16 columns passed adaptive threshold
+✗ Defect rejected: Only 17 columns passed adaptive threshold
+✗ Defect rejected: Only 18 columns passed adaptive threshold
+✗ Defect rejected: Only 19 columns passed adaptive threshold
+✗ Defect rejected: Only 20 columns passed adaptive threshold
+✗ Defect rejected: Only 21 columns passed adaptive threshold
+✗ Defect rejected: Only 22 columns passed adaptive threshold
+✗ Defect rejected: Only 23 columns passed adaptive threshold
+✗ Defect rejected: Only 24 columns passed adaptive threshold
+✗ Defect rejected: Only 25 columns passed adaptive threshold
+✗ Defect rejected: Only 26 columns passed adaptive threshold
+✗ Defect rejected: Only 27 columns passed adaptive threshold
+✗ Defect rejected: Only 28 columns passed adaptive threshold
+✗ Defect rejected: Only 29 columns passed adaptive threshold
+✗ Defect rejected: Only 30 columns passed adaptive threshold
+✗ Defect rejected: Only 31 columns passed adaptive threshold
+✗ Defect rejected: Only 32 columns passed adaptive threshold
+✗ Defect rejected: Only 33 columns passed adaptive threshold
+✗ Defect rejected: Only 34 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:46
+Defect 68: Length=50.3mm, Class=Very Large (40%+), Threshold=62078.4
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:46
+width_1_only 3
+width_0_yes 3
+Breadth() final width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:46
+✗ Defect rejected: max_value=58609 vs threshold=62078.399999999994
+Row fetched 27/11/2025 11:19:46
+Creating submatrix 27/11/2025 11:19:46
+Applying to_numeric on submatrix 27/11/2025 11:19:46
+Computing two_d_list 27/11/2025 11:19:46
+Calculating max/min 27/11/2025 11:19:46
+Calculating length_percent 27/11/2025 11:19:46
+Adaptive sigma refinement 27/11/2025 11:19:46
+Valid column loop 27/11/2025 11:19:46
+✗ Defect rejected: Only 1 columns passed adaptive threshold
+✗ Defect rejected: Only 2 columns passed adaptive threshold
+✗ Defect rejected: Only 3 columns passed adaptive threshold
+✗ Defect rejected: Only 4 columns passed adaptive threshold
+✗ Defect rejected: Only 5 columns passed adaptive threshold
+✗ Defect rejected: Only 6 columns passed adaptive threshold
+✗ Defect rejected: Only 7 columns passed adaptive threshold
+Printing defect basic info 27/11/2025 11:19:46
+Defect 68: Length=31.2mm, Class=Large (30-40%), Threshold=56905.2
+✓ Defect accepted with Large (30-40%) settings
+Calculating depth_old 27/11/2025 11:19:46
+Running compute_depth 27/11/2025 11:19:46
+ values: pipe_thickness: 7.1 : scaling : 3.2
+Computing max_index 27/11/2025 11:19:46
+Calculating start/end oddo + speed 27/11/2025 11:19:46
+Internal/external detection 27/11/2025 11:19:46
+Absolute + upstream distance calc 27/11/2025 11:19:46
+Breadth() initial width calc 27/11/2025 11:19:46
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Dimension classification 27/11/2025 11:19:46
+Orientation calculation 27/11/2025 11:19:46
+Replace first column 27/11/2025 11:19:46
+Interpolating modified df 27/11/2025 11:19:46
+Running process_submatrix 27/11/2025 11:19:47
+width_1_only 139
+width_0_yes 146
+Breadth() final width calc 27/11/2025 11:19:47
+thickness 1: 7.1
+x1, y1, z1 4.6 9.2 26.2
+Depth rounding calculation 27/11/2025 11:19:47
+✓ Valid defect: depth=4%, width=150.39999999999995mm, length=40.83333333333394mm
+Appending defect to list 27/11/2025 11:19:47
+Adding heatmap annotation + rectangle 27/11/2025 11:19:47
+------ end of iteration ------ 27/11/2025 11:19:47
+
+Total submatrices stored: 68
+project name :  GMFL_12inch_24-01-2025_PTT(3)
+Directory already exists: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\submatrix_generated\GMFL_12inch_24-01-2025_PTT(3)/
+All files deleted from directory: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\submatrix_generated\GMFL_12inch_24-01-2025_PTT(3)/
+inside submatrices
+
+=== DEFECT CLASSIFICATION SUMMARY ===
+Total defects found: 68
+Total defects found: 68
+Very Small (1-10%): 27/30 defects (90.0% acceptance)
+Small (10-20%): 16/17 defects (94.1% acceptance)
+Medium (20-30%): 12/12 defects (100.0% acceptance)
+Large (30-40%): 4/4 defects (100.0% acceptance)
+Very Large (40%+): 8/10 defects (80.0% acceptance)
+Below 1%: 1/6 defects (16.7% acceptance)
+start of insertion in database 27/11/2025 11:19:48
+
+Inserting defects into database...
+inside insert defects into db fucntuion
+end of insertion in database 27/11/2025 11:19:48
+inside ml calc
+Defect numbers in metadata: [ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+ 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48
+ 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68]
+🔍 Matching submatrices in: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\submatrix_generated\GMFL_12inch_24-01-2025_PTT(3)/
+✅ Final test dataset shape: (68, 7)
+(68, 7)
+Model successfully loaded
+ length fft: 896
+ length fft: 32
+ length fft: 40
+ length fft: 20
+ length fft: 168
+ length fft: 24
+ length fft: 4750
+ length fft: 1920
+ length fft: 6351
+ length fft: 480
+ length fft: 1176
+ length fft: 1008
+ length fft: 80
+ length fft: 168
+ length fft: 2150
+ length fft: 6615
+ length fft: 4623
+ length fft: 216
+ length fft: 5040
+ length fft: 10701
+ length fft: 276
+ length fft: 840
+ length fft: 48
+ length fft: 192
+ length fft: 1440
+ length fft: 120
+ length fft: 216
+ length fft: 40
+ length fft: 40
+ length fft: 60
+ length fft: 996
+ length fft: 4410
+ length fft: 1320
+ length fft: 60
+ length fft: 840
+ length fft: 2820
+ length fft: 2324
+ length fft: 132
+ length fft: 300
+ length fft: 3213
+ length fft: 2100
+ length fft: 1400
+ length fft: 3009
+ length fft: 2691
+ length fft: 696
+ length fft: 288
+ length fft: 3000
+ length fft: 3750
+ length fft: 1540
+ length fft: 136
+ length fft: 60
+ length fft: 2716
+ length fft: 1940
+ length fft: 248
+ length fft: 6825
+ length fft: 4422
+ length fft: 996
+ length fft: 996
+ length fft: 899
+ length fft: 2193
+ length fft: 1428
+ length fft: 3905
+ length fft: 180
+ length fft: 232
+ length fft: 14605
+ length fft: 3696
+ length fft: 11449
+ length fft: 40
+Features shape: (68, 17)
+Feature columns: 17
+['mean', 'std', 'max', 'min', 'threshold_crossings', 'anomaly_score', 'cwt_median', 'fft_0', 'fft_1', 'fft_2', 'fft_3', 'fft_4', 'fft_5', 'fft_6', 'fft_7', 'fft_8', 'fft_9']
+0          submatrix_ptt-1(1, 4, 4).csv
+1     submatrix_ptt-1(10, 131, 131).csv
+2     submatrix_ptt-1(11, 131, 131).csv
+3       submatrix_ptt-1(12, 68, 68).csv
+4     submatrix_ptt-1(13, 136, 136).csv
+                    ...
+63      submatrix_ptt-1(67, 84, 84).csv
+64    submatrix_ptt-1(68, 120, 120).csv
+65       submatrix_ptt-1(7, 98, 98).csv
+66     submatrix_ptt-1(8, 120, 120).csv
+67     submatrix_ptt-1(9, 136, 136).csv
+Name: filename, Length: 68, dtype: object
+Index(['mean', 'max', 'min', 'threshold_crossings', 'anomaly_score',
+       'cwt_median', 'fft_0', 'fft_1', 'fft_2', 'fft_3', 'fft_4', 'fft_5',
+       'fft_6', 'fft_7', 'fft_8', 'fft_9', 'speed', 'Start_sensor',
+       'End_sensor', 'pred_width'],
+      dtype='object')
+
+Processing complete! Found 68 total defects using 3-part classification.
+Displaying visualization...
+temp html path: D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\temp\heatmap_new.html
+GMFL_12inch_24-01-2025_PTT(3)
+2
+here1
+saving html at : D:\Anubhav\vdt_backend\GMFL_12_Inch_Desktop\backend_data\data_generated\Charts\GMFL_12inch_24-01-2025_PTT(3)\2.html
+here 2
+End of conversion at :  27/11/2025 11:20:07
+hiiii
