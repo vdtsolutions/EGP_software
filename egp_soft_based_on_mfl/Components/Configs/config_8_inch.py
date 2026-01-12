@@ -1,16 +1,13 @@
 import json
 import os
 import pymysql
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QMessageBox, QLabel
+from datetime import datetime
 from google.oauth2 import service_account
 from google.cloud import storage
-# import Components.logger as logger
-from datetime import datetime
 from google.cloud import bigquery
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-
 
 # -----------------------------------------
 # GLOBAL CONSTANTS (SAFE FOR BOTH GUI + WORKERS)
@@ -33,7 +30,120 @@ msg = None
 host = 'localhost'
 user='root'
 password='byy184'
-db_mysql='mfldesktop'
+# db_mysql='gmfldesktop12'
+db_mysql='egp12inch'
+
+# Source & table configuration
+source_dataset_id = 'Egp_26inch_processed_data'
+source_table_id = 'Egp_26_copy_x1'
+project_id = 'quantum-theme-334609'
+table_name = f"{project_id}.{source_dataset_id}.{source_table_id}"
+
+
+
+# Number of sensors
+num_of_sensors = 48
+F_columns = int(num_of_sensors / 4)
+
+# Reference values
+oddo1 = 0
+oddo2 = 0
+roll_value = -161.45
+pitch_value = -1.15
+yaw_value = 75.91
+
+# Pipe configefewf
+pipe_thickness = 5.5
+outer_dia = 324
+
+# Sigma values
+positive_sigma_col = 1.70
+positive_sigma_row = 0.45
+negative_sigma = 3
+defect_box_thresh = 0.25
+
+# Sliding window / geometrical constants
+w_per_1 = 0.55
+oddo1_ref = oddo1
+div_factor = 1.15
+slope_per = 0.65
+
+# Degree/minute config
+minute = 720 / num_of_sensors
+degree = minute / 2
+
+# Depth calculation config
+scaling_exponent = 2.9
+calibration_factor = 0.82
+min_energy_threshold = 1e-6
+
+
+
+# Length percentage constants
+l_per_1 = 0.76
+l_per_2 = 0.74
+l_per_3 = 0.72
+l_per_4 = 0.70
+
+# Theta angle configuration
+theta_ang1 = 1.7
+theta_ang2 = 3.4
+theta_ang3 = 9.7
+
+
+#variable based on inch type
+def get_adaptive_sigma_refinement(length_percent):
+    """
+    Returns sigma multiplier + refinement + classification
+    based on 5-part defect length categorization.
+    """
+    if 1 <= length_percent < 10:
+        return 0.6, 1.2, "Very Small (1-10%)"
+    elif 10 <= length_percent < 20:
+        return 0.5, 0.9, "Small (10-20%)"
+    elif 20 <= length_percent < 30:
+        return 1.0, 1.0, "Medium (20-30%)"
+    elif 30 <= length_percent < 40:
+        return 1.1, 0.9, "Large (30-40%)"
+    elif length_percent >= 40:
+        return 1.2, 0.8, "Very Large (40%+)"
+    else:
+        return 0.85, 1.15, "Below 1%"
+
+
+
+
+
+
+
+#-----------FUNCTIONNS AND VARIABLES THAT NEED NOT TO BE CHANGE AND SHOULD BE IN EVERY CONFIG--------------------
+
+# Folder locations
+weld_pipe_pkl = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'DataFrames1') + '/'
+clock_pkl = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'ClockDataFrames') + '/'
+roll_pkl_lc = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'DataFrames_rollLC') + '/'
+image_folder = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'Charts') + '/'
+
+# Model configuration
+model_location = os.path.join(
+    os.getcwd(),
+    'egp_soft_based_on_mfl',
+    'backend_data',
+    'models_ML',
+    'ML_MODEL_PKL',
+    'rf_width_model.pkl'
+)
+
+# Dynamically generate sensor columns
+sensor_columns_hall_sensor = [
+    f"F{i}H{j}" for i in range(1, F_columns + 1) for j in range(1, 4 + 1)
+]
+sensor_str_hall = ", ".join(sensor_columns_hall_sensor)
+
+sensor_columns_prox = [
+    f"F{i}P{((i - 1) % 4) + 1}" for i in range(1, F_columns + 1)
+]
+sensor_str_prox = ", ".join(sensor_columns_prox)
 
 # -----------------------------------------------------
 #               🔥 RUNTIME INITIALIZATION
@@ -87,175 +197,40 @@ def init_runtime():
     print("mssage box created")
 
 
-# connection = pymysql.connect(host='localhost', user='root', password='byy184', db='mfldesktop')
-# credentials = service_account.Credentials.from_service_account_file('./utils/Authorization.json')
-# storage_client = storage.Client.from_service_account_json('./utils/GCS_Auth.json')
-# sensor_values = json.loads(open('./utils/sensor_value_update.json').read())
-
-
-#Source table, project_id  configuration
-source_dataset_id = 'Processed_data'
-source_table_id = 'Main_8_copy_x58'
-project_id = 'quantum-theme-334609'
-
-#table configuration
-table_name = project_id + '.'+source_dataset_id + '.'+source_table_id
-
-#model configuration
-model_location = os.path.join(os.getcwd(), 'backend_data', 'models_ML', 'ML_MODEL_PKL' , 'rf_width_model.pkl')
-
-#num of sensors, f_columns
-num_of_sensors = 96
-F_columns = int(num_of_sensors/4)
-
-"""
-Reference value will be consider
-"""
-oddo1 = -1018
-oddo2 = 0
-
-
-
-roll_value = -15.09
-pitch_value = 0.31
-yaw_value = 69.0
-
-
-
-pipe_thickness = 12.7
-
-
-
-positive_sigma_col = 1.2
-positive_sigma_row = 0.5
-negative_sigma = 3
-
-
-defect_box_thresh = 0.35
-
-
-outer_dia = 219
-
-w_per_1 = 0.55
-
-oddo1_ref = -1018
-
-div_factor = 1.15
-
-slope_per = 0.65
-
-#l per configurations
-""" <!----------    Different length percentages but not stored in db, only in front    ----------!>    """
-l_per_1 = 0.76                               ##### 24% length percentage in clock heatmap calculation #####
-l_per_2 = 0.74                              ##### 26% length percentage in clock heatmap calculation #####
-l_per_3 = 0.72                              ##### 28% length percentage in clock heatmap calculation #####
-l_per_4 = 0.70                              ##### 30% length percentage in clock heatmap calculation #####
-
-
-#theta angle configuration
-theta_ang1 = 2.6
-theta_ang2 = 6.2
-theta_ang3 = 11.1
-
-#degree, minute configuration
-minute = 720/num_of_sensors
-degree = minute/2
-
-
-#location for folders
-weld_pipe_pkl = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'DataFrames1') + '/'          #for line chart (counter v sensor) and pipe visualization(heatmap)
-clock_pkl     = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'ClockDataFrames') + '/'      #for heatmap ( distance v orientation)
-roll_pkl_lc   = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'DataFrames_rollLC') + '/'    #for line chart (absolute dist. vs orientation)
-image_folder  = os.path.join(os.getcwd(), 'backend_data', 'data_generated', 'Charts') + '/'               #for saving charts/maps/graphs/plots
-
-
-
-
-#generarting hall sensor columns as list and string
-sensor_columns_hall_sensor = [f"F{i}H{j}" for i in range(1, F_columns + 1) for j in range(1, 5)]
-
-sensor_str_hall = ", ".join(sensor_columns_hall_sensor)
-
-#generarting proximity sensor columns as list and string
-sensor_columns_prox = [f"F{i}P{(i - 1) % 4 + 1}" for i in range(1, F_columns + 1)]
-sensor_str_prox = ", ".join(sensor_columns_prox)
-
-
-
-# Depth calculation config
-scaling_exponent = 2.9
-calibration_factor = 0.82
-min_energy_threshold = 1e-6
-
-
-
-def error_msg(Title, Description):
-    """
-    Method that will show a alert box for Error
-    :param Title: Title of the Box
-    :param Description: Description of the Box
-    :return: void type
-    """
-    set_msg_body(Title, Description, QMessageBox.Critical, "Critical")
-
-
-def info_msg(Title, Description):
-    set_msg_body(Title, Description, QMessageBox.Information, "Information")
-
-
-def warning_msg(Title, Description):
-    set_msg_body(Title, Description, QMessageBox.Warning, "Warning")
-
+# -----------------------------------------------------
+#               💬 MESSAGE BOX HELPERS
+# -----------------------------------------------------
 
 def set_msg_body(Title, Description, icon, WindowTitle):
+    global app, msg
     try:
+        if app is None or msg is None:
+            init_runtime()  # GUI fallback
+
         msg.setIcon(icon)
         msg.setText(Title)
         msg.setInformativeText(Description)
         msg.setWindowTitle(WindowTitle)
         msg.exec_()
-        app.exec_()
-    except OSError as error:
-        # logger.log_error(error or "Set_msg_body method failed with unknown Error")
+    except Exception:
         pass
 
-def print_with_time(msg):
-    now = datetime.now()
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    print(msg, dt_string)
+def error_msg(Title, Description):
+    set_msg_body(Title, Description, QMessageBox.Critical, "Critical")
+
+def info_msg(Title, Description):
+    set_msg_body(Title, Description, QMessageBox.Information, "Information")
+
+def warning_msg(Title, Description):
+    set_msg_body(Title, Description, QMessageBox.Warning, "Warning")
 
 
+# -----------------------------------------------------
+#               ⏱️ UTIL FUNCTIONS
+# -----------------------------------------------------
 
+def print_with_time(message: str):
+    now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    print(f"{message} {now}")
 
-def get_adaptive_sigma_refinement(length_percent):
-    """
-    Get refined sigma multipliers based on 5-part length percentage classification:
-    1-10%, 10-20%, 20-30%, 30-40%, 40%+
-    """
-    print("inside config adaptive")
-    if 1 <= length_percent < 10:
-        sigma_multiplier = 0.5  # Less aggressive for very small defects
-        refinement_factor = 0.8
-        classification = "Very Small (1-10%)"
-    elif 10 <= length_percent < 20:
-        sigma_multiplier = 0.8  # Slightly more sensitive for small defects
-        refinement_factor = 0.9
-        classification = "Small (10-20%)"
-    elif 20 <= length_percent < 30:
-        sigma_multiplier = 1.1  # Standard sensitivity
-        refinement_factor = 1.0
-        classification = "Medium (20-30%)"
-    elif 30 <= length_percent < 40:
-        sigma_multiplier = 1.4  # Slightly less sensitive
-        refinement_factor = 0.9
-        classification = "Large (30-40%)"
-    elif length_percent >= 40:
-        sigma_multiplier = 1.6  # Less sensitive for largest defects
-        refinement_factor = 0.8
-        classification = "Very Large (40%+)"
-    else:
-        sigma_multiplier = 0.85
-        refinement_factor = 1.15
-        classification = "Below 1%"
-    return sigma_multiplier, refinement_factor, classification
 

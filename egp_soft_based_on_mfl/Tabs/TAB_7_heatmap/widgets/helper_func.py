@@ -315,12 +315,14 @@ def show_name_dialog_t8(self):
                 end_index_c = round(x_end)
                 y_start15 = round(y_start)
                 y_end15 = round(y_end)
+
                 print("start_index15", start_index15)
                 print("end_index15", end_index15)
                 print("start_sensor", y_start15)
                 print("end_sensor", y_end15)
                 print("start_index_c", start_index_c)
                 print("end_index_c", end_index_c)
+
                 finial_defect_list = []
                 self.config.print_with_time("Start fetching at : ")
                 query_for_start = 'SELECT * FROM ' + self.config.table_name + ' WHERE index>={} AND  index<={} order by index'
@@ -833,16 +835,29 @@ def show_name_dialog_chm(self):
                     speed = round(i['speed'], 2)
                     latitude = i['latitude']
                     longitude = i['longitude']
-                    with self.config.connection.cursor() as cursor:
-                        query_defect_insert = "INSERT into defect_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
-
-                        cursor.execute(query_defect_insert, (
-                            int(runid), self.Weld_id_tab9, self.pipe_len_oddo1_chm, start_index, end_index,
+                    # with self.config.connection.cursor() as cursor:
+                    #     query_defect_insert = "INSERT into defect_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+                    #
+                    #     cursor.execute(query_defect_insert, (
+                    #         int(runid), self.Weld_id_tab9, self.pipe_len_oddo1_chm, start_index, end_index,
+                    #         start_sensor, end_sensor, upstream_oddo1, absolute_distance, orientation,
+                    #          length, Width, width_new, depth, max_value, min_value, l_per1, dimension_classification,
+                    #         defect_type,base_value,  WT, speed, latitude, longitude))
+                    #
+                    # self.config.connection.commit()
+                    query_defect_insert = "INSERT into defect_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+                    try:
+                        with self.config.connection.cursor() as cursor:
+                            cursor.execute(query_defect_insert, (int(runid), self.Weld_id_tab9, self.pipe_len_oddo1_chm, start_index, end_index,
                             start_sensor, end_sensor, upstream_oddo1, absolute_distance, orientation,
                              length, Width, width_new, depth, max_value, min_value, l_per1, dimension_classification,
                             defect_type,base_value,  WT, speed, latitude, longitude))
-
-                    self.config.connection.commit()
+                        self.config.connection.commit()
+                    except Exception as e:
+                        self.config.connection.rollback()
+                        QMessageBox.critical(self, "DB Error", str(e))
+                        return
+                    refresh_tab9_table(self)
                     QMessageBox.information(self, 'Success', 'Data saved')
 
                     with self.config.connection.cursor() as cursor:
@@ -857,9 +872,9 @@ def show_name_dialog_chm(self):
                                 for column_num, data in enumerate(row_data):
                                     self.myTableWidget_tab9.setItem(row_number, column_num,
                                                                 QtWidgets.QTableWidgetItem(str(data)))
-                                    self.myTableWidget_tab9.setContextMenuPolicy(Qt.CustomContextMenu)
-                                    self.myTableWidget_tab9.customContextMenuRequested.connect(lambda position: open_context_menu_ori_tab9(self, position))
-                                    self.myTableWidget_tab9.doubleClicked.connect(lambda: handle_table_double_click_chm(self))
+                                    # self.myTableWidget_tab9.setContextMenuPolicy(Qt.CustomContextMenu)
+                                    # self.myTableWidget_tab9.customContextMenuRequested.connect(lambda position: open_context_menu_ori_tab9(self, position))
+                                    # self.myTableWidget_tab9.doubleClicked.connect(lambda: handle_table_double_click_chm(self))
 
                 break  # Exit the loop if a valid name is provided
             else:
@@ -868,6 +883,21 @@ def show_name_dialog_chm(self):
             print('Operation canceled.')
             break
 
+def refresh_tab9_table(self):
+    with self.config.connection.cursor() as cursor:
+        Fetch = """SELECT id,pipe_id,`WT(mm)`,absolute_distance,upstream,
+                          defect_type,dimension_classification,orientation,
+                          length,width_final,depth_new
+                   FROM defect_clock_hm
+                   WHERE runid=%s AND pipe_id=%s"""
+        cursor.execute(Fetch, (self.runid, self.Weld_id_tab9))
+        rows = cursor.fetchall()
+
+    self.myTableWidget_tab9.setRowCount(0)
+    for r,row in enumerate(rows):
+        self.myTableWidget_tab9.insertRow(r)
+        for c,val in enumerate(row):
+            self.myTableWidget_tab9.setItem(r,c,QtWidgets.QTableWidgetItem(str(val)))
 
 def handle_table_double_click_chm(self):
     weld_id = self.Weld_id_tab9
