@@ -17,7 +17,8 @@ from pathlib import Path
 
 
 
-from .widgets.helper_func import reset_btn_fun_chm, all_box_selection_ori_heatmap, export_to_excel
+from .widgets.helper_func import reset_btn_fun_chm, all_box_selection_ori_heatmap, export_to_excel, \
+    open_context_menu_ori_tab9, handle_table_double_click_chm
 from .widgets.heatmap_generator.tab9_heatmap import tab9_heatmap
 from .widgets.next_prev_btn import tab9_heatmap_previous, tab9_heatmap_next
 from ...Components.dig.runners.disgheet_abs_runner import DigsheetABSRunner
@@ -343,6 +344,10 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         self.canvas_tab9.setVisible(False)
         self.m_output.setVisible(False)
 
+        self.myTableWidget_tab9.clicked.connect(self.handle_row_click_tab9)
+        self.myTableWidget_tab9.doubleClicked.connect(lambda: handle_table_double_click_chm(self))
+        self.myTableWidget_tab9.customContextMenuRequested.connect(lambda: open_context_menu_ori_tab9(self))
+
     def digsheet_abs_runner(self):
         print(f"running digsheet usin button: defectNO--  {self.selected_defect_no} . abs_value : {self.selected_abs_distance}")
         print(f" pipetally path: {self.parent.pipetally}")
@@ -354,6 +359,22 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
             # r"D:\Anubhav\pickle9"
         )
 
+    def handle_row_click_tab9(self, index):
+        row = index.row()
+        defect_no_item = self.myTableWidget_tab9.item(row, 0)
+        abs_dist_item = self.myTableWidget_tab9.item(row, 3)
+
+        if defect_no_item and abs_dist_item:
+            self.selected_defect_no = defect_no_item.text()
+            self.selected_abs_distance = abs_dist_item.text()
+
+            self.digsheet_btn.setEnabled(True)
+            self.digsheet_btn.setStyleSheet("background:#00ff88;color:black;font-weight:bold;")
+
+            print("🟢 DIG ENABLED →", self.selected_defect_no)
+            print("🔍 CLICK SELECTED")
+            print("   Defect No:", self.selected_defect_no)
+            print("   Absolute Distance:", self.selected_abs_distance)
 
     @QtCore.pyqtSlot(str)
     def _slot_update_webview(self, html_path):
@@ -464,10 +485,10 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         # --- Fill SQL table ---
         with self.config.connection.cursor() as cursor:
             Fetch_weld_detail = """
-                SELECT id,pipe_id,`WT(mm)`,absolute_distance,upstream,
-                       defect_type,dimension_classification,orientation,
-                       length,Width_final,depth_new
-                FROM defect_clock_hm
+                SELECT id,pipe_id, WT, Absolute_distance,Upstream,
+                       feature_type,Orientation,
+                       length,Width,depth
+                FROM dent_clock_hm
                 WHERE runid=%s AND pipe_id=%s
             """
             cursor.execute(Fetch_weld_detail, (self.runid, self.Weld_id_tab9))

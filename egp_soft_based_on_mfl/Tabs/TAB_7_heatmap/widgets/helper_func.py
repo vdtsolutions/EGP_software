@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import (
-    QMessageBox, QFileDialog, QMenu, QAction, QInputDialog,
+    QMessageBox, QFileDialog, QMenu, QAction, QInputDialog, QAbstractItemView,
 )
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as path_effects
@@ -42,7 +42,7 @@ def all_box_selection_ori_heatmap(self):
             runid = self.parent.runid
 
             with self.config.connection.cursor() as cursor:
-                query_for_coordinates = "SELECT id, start_index, end_index, start_sensor, end_sensor from defect_clock_hm WHERE pipe_id = %s AND runid = %s AND id = %s"
+                query_for_coordinates = "SELECT id, start_index, end_index, start_sensor, end_sensor from dent_clock_hm WHERE pipe_id = %s AND runid = %s AND id = %s"
                 cursor.execute(query_for_coordinates, (weld_id, runid, defect_id))
                 result = cursor.fetchone()
 
@@ -255,18 +255,18 @@ def handle_console_message(self, level, msg, line, source):
 
 def line_select_callback_chm(self, eclick, erelease):
     print("✅ [Triggered] line_select_callback_chm now running...")
-    self.rect_start_chm = eclick.xdata, eclick.ydata
-    self.rect_end_chm = erelease.xdata, erelease.ydata
-    draw_rectangle_chm(self)
+    self.rect_start_hm = eclick.xdata, eclick.ydata
+    self.rect_end_hm = erelease.xdata, erelease.ydata
+    draw_rectangle_t8(self)
 
 
-def draw_rectangle_chm(self):
+def draw_rectangle_t8(self):
     # Function to draw a rectangle on the Matplotlib plot
-    if self.rect_start_chm is not None and self.rect_end_chm is not None:
+    if self.rect_start_hm is not None and self.rect_end_hm is not None:
         for patch in self.figure_tab9.gca().patches:
             patch.remove()
-        x_start, y_start = self.rect_start_chm
-        x_end, y_end = self.rect_end_chm
+        x_start, y_start = self.rect_start_hm
+        x_end, y_end = self.rect_end_hm
         if x_start is not None and y_start is not None and x_end is not None and y_end is not None:
             rect = plt.Rectangle(
                 (min(x_start, x_end), min(y_start, y_end)),
@@ -278,10 +278,217 @@ def draw_rectangle_chm(self):
             )
             self.figure_tab9.gca().add_patch(rect)
             self.canvas_tab9.draw()
-            show_name_dialog_chm(self)
+            show_name_dialog_t8(self)
+
+def show_name_dialog_t8(self):
+    credentials = self.config.credentials
+    project_id = self.config.project_id
+    client = bigquery.Client(credentials=credentials, project=project_id)
+    while True:
+        name, ok = QInputDialog.getText(self, 'Enter Name', 'Enter the name of the drawn box:')
+        if ok:
+            if name.strip():  # Check if the entered name is not empty or just whitespace
+                x_start, y_start = self.rect_start_hm
+                x_end, y_end = self.rect_end_hm
+                runid = self.runid
+                pipe = self.Weld_id_tab9
+
+                # start_index15 = self.index_hm_set[round(x_start)]
+                # end_index15 = self.index_hm_set[round(x_end)]
+                # self.index_hm_set = self.index_tab9
+                # y_start15 = round(y_start)
+                # y_end15 = round(y_end)
+                # start_index_c = round(x_start)
+                # end_index_c = round(x_end)
+                #
+                # print("start_index", start_index15)
+                # print("end_index", end_index15)
+                # print("start_sensor", y_start15)
+                # print("end_sensor", y_end15)
+                # print("start_index_c", start_index_c)
+                # print("end_index_c", end_index_c)
 
 
+                start_index15 = self.index_chm[round(x_start)]
+                end_index15 = self.index_chm[round(x_end)]
+                start_index_c = round(x_start)
+                end_index_c = round(x_end)
+                y_start15 = round(y_start)
+                y_end15 = round(y_end)
+                print("start_index15", start_index15)
+                print("end_index15", end_index15)
+                print("start_sensor", y_start15)
+                print("end_sensor", y_end15)
+                print("start_index_c", start_index_c)
+                print("end_index_c", end_index_c)
+                finial_defect_list = []
+                self.config.print_with_time("Start fetching at : ")
+                query_for_start = 'SELECT * FROM ' + self.config.table_name + ' WHERE index>={} AND  index<={} order by index'
+                query_job = client.query(query_for_start.format(start_index15, end_index15))
+                df_pipe = query_job.result().to_dataframe()
 
+                oddo1 = list(df_pipe['ODDO1'] - self.config.oddo1)
+                roll = list(df_pipe['ROLL'] - self.config.roll_value)
+                # print("oddo1", oddo1)
+                # print("roll", roll)
+
+                self.df_new = pd.DataFrame(df_pipe, columns=[f'proximity{i}' for i in range(1, 25)])
+
+                """
+                Calculate Upstream Distance oddo1 and oddo2
+                """
+                upstream_oddo1 = (oddo1[0] - self.oddo1_li_chm[0])/1000
+                print("upstream_oddo1=>", upstream_oddo1)
+
+                """
+                Calculate length of the defect
+                """
+                length_of_defect_oddo1 = round(oddo1[-1] - oddo1[0])
+                # length_of_defect_oddo2 = round(oddo2[-1] - oddo2[0])
+                print("length_of_defect_oddo1=>", length_of_defect_oddo1)
+                # print("length_of_defect_oddo2=>", length_of_defect_oddo2)
+
+                """
+                Calculate Abs.Distance of the defect
+                """
+                Abs_Distance_oddo1 = oddo1[0]/1000
+                print("Abs.distance_oddo1=>", Abs_Distance_oddo1)
+
+                # Abs_Distance_oddo2 = oddo2[0]
+                # print("Abs.distance_oddo1=>", Abs_Distance_oddo2)
+
+                """
+                Calculate Width of the Defect
+                """
+                Width = Width_calculation(y_start15, y_end15)
+                Width = round(Width)
+                print("Width of Defect=>", Width)
+
+                submatrix = self.clock_col.iloc[start_index_c:end_index_c + 1, y_start15:y_end15 + 1]
+                # submatrix = submatrix.apply(pd.to_numeric, errors='coerce')  # Ensure numeric data
+                if submatrix.isnull().values.any():
+                    print("Submatrix contains NaN values, skipping this iteration.")
+                    continue
+                print(submatrix)
+                two_d_list = submatrix.values.tolist()
+
+                max_value = submatrix.max().max()
+                min_positive = min(x for row in two_d_list for x in row if x > 0)
+
+                depth_old = (max_value-min_positive)/min_positive*100
+                print("depth_old", depth_old)
+
+                depth_new = (((length_of_defect_oddo1 / Width) * (max_value / min_positive))*100)/self.config.pipe_thickness
+                print("depth_new", depth_new)
+
+                # wt = 0
+                # if self.weld_id == 2:
+                #     wt = 5.5
+                # else:
+                #     wt = 7.1
+                wt = self.config.pipe_thickness
+
+                # type = 'External'
+                # sensor_no = int((y_start15 + y_end15)/2)
+                # angle = self.defect_marking_clock(roll, sensor_no, Abs_Distance_oddo2, oddo2)
+                # print("angle", angle)
+
+                avg_counter = round((start_index_c + end_index_c)/2)
+                avg_sensor = round((y_start15+y_end15)/2)
+                print("avg_counter", avg_counter)
+                print("avg_sensor", avg_sensor)
+                angle = self.clock_col.columns[avg_sensor]
+                # angle = self.Roll_hr.iloc[avg_counter, avg_sensor]
+                # k2 = self.map_ori_sens_ind.iloc[avg_counter, avg_sensor]
+                # angle = k2[2]
+                print("angle", angle)
+
+                finial_defect_list.append({"start_index": start_index_c, "end_index": end_index_c,
+                                           "start_sensor": y_start15, "end_sensor": y_end15,
+                                           "Absolute_distance": Abs_Distance_oddo1,
+                                           "Upstream": upstream_oddo1,
+                                           "Pipe_length": self.pipe_len_oddo1_chm,
+                                           "Feature_type": name,
+                                           "Orientation": angle, "WT": wt,
+                                           "length": length_of_defect_oddo1,
+                                           "Width": Width,
+                                           "Depth_percentage": depth_old})
+                for i in finial_defect_list:
+                    start_index = i['start_index']
+                    end_index = i['end_index']
+                    start_sensor = i['start_sensor']
+                    end_sensor = i['end_sensor']
+                    Absolute_distance = round(i['Absolute_distance'], 2)
+                    Upstream = round(i['Upstream'], 2)
+                    Pipe_length = i['Pipe_length']
+                    Feature_type = i['Feature_type']
+                    Orientation = i['Orientation']
+                    WT = i['WT']
+                    length = i['length']
+                    Width = i['Width']
+                    Depth_percentage = round(i['Depth_percentage'], 1)
+
+                    """
+                    Insert data into database
+                    """
+                    with self.config.connection.cursor() as cursor:
+                        query_defect_insert = "INSERT INTO dent_clock_hm (runid,pipe_id,start_index,end_index,start_sensor,end_sensor,Absolute_distance,Upstream,Pipe_length,Feature_type,Orientation,WT,length,Width,depth) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+
+                        cursor.execute(query_defect_insert, (
+                            int(runid), pipe, start_index, end_index, start_sensor, end_sensor,
+                            Absolute_distance, Upstream, self.pipe_len_oddo1_chm, Feature_type,
+                            Orientation, WT, length, Width, Depth_percentage))
+                        self.config.connection.commit()
+                    QMessageBox.information(self, 'Success', 'Data saved')
+
+                    with self.config.connection.cursor() as cursor:
+                        Fetch_weld_detail = "select id,pipe_id,WT,Absolute_distance,Upstream,Feature_type,Orientation,length,Width,depth from dent_clock_hm where runid='%s' and pipe_id='%s'"
+                        # Execute query.
+                        cursor.execute(Fetch_weld_detail, (int(self.runid), int(self.Weld_id_tab9)))
+                        self.myTableWidget_tab9.setRowCount(0)
+                        allSQLRows = cursor.fetchall()
+                        if allSQLRows:
+                            for row_number, row_data in enumerate(allSQLRows):
+                                self.myTableWidget_tab9.insertRow(row_number)
+                                for column_num, data in enumerate(row_data):
+                                    self.myTableWidget_tab9.setItem(row_number, column_num,
+                                                                QtWidgets.QTableWidgetItem(str(data)))
+                            self.myTableWidget_tab9.setEditTriggers(QAbstractItemView.NoEditTriggers)
+                            self.myTableWidget_tab9.doubleClicked.connect(lambda: handle_table_double_click_chm(self))
+                            # self.myTableWidget_tab8.doubleClicked.connect(self.handle_table_double_click)
+                        # else:
+                        #     # self.myTableWidget5.doubleClicked.disconnect(self.handle_table_double_click)
+                        #     Config.warning_msg("No record found", "")
+                break
+            else:
+                QMessageBox.warning(self, 'Invalid Input', 'Please enter a name.')
+        else:
+            print('Operation canceled.')
+            break
+
+
+# def draw_rectangle_chm(self):
+#     # Function to draw a rectangle on the Matplotlib plot
+#     if self.rect_start_chm is not None and self.rect_end_chm is not None:
+#         for patch in self.figure_tab9.gca().patches:
+#             patch.remove()
+#         x_start, y_start = self.rect_start_chm
+#         x_end, y_end = self.rect_end_chm
+#         if x_start is not None and y_start is not None and x_end is not None and y_end is not None:
+#             rect = plt.Rectangle(
+#                 (min(x_start, x_end), min(y_start, y_end)),
+#                 abs(x_end - x_start),
+#                 abs(y_end - y_start),
+#                 edgecolor='black',
+#                 linewidth=1,
+#                 fill=False
+#             )
+#             self.figure_tab9.gca().add_patch(rect)
+#             self.canvas_tab9.draw()
+#             show_name_dialog_chm(self)
+#
+#
+#
 def show_name_dialog_chm(self):
     credentials = self.config.credentials
     project_id = self.config.project_id
@@ -674,7 +881,7 @@ def handle_table_double_click_chm(self):
     defect_id = self.myTableWidget_tab9.item(selected_row, 0).text()
     try:
         with self.config.connection.cursor() as cursor:
-            query_for_coordinates = "SELECT id, start_index, end_index, start_sensor, end_sensor, length, Width, depth_new from defect_clock_hm WHERE pipe_id = %s AND runid = %s AND id = %s"
+            query_for_coordinates = "SELECT id, start_index, end_index, start_sensor, end_sensor, length, Width, depth from dent_clock_hm WHERE pipe_id = %s AND runid = %s AND id = %s"
             cursor.execute(query_for_coordinates, (weld_id, runid, defect_id))
             result = cursor.fetchone()
             print(f"Query Result: {result}")
