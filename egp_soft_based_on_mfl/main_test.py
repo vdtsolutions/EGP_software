@@ -11,7 +11,7 @@ if not hasattr(importlib.metadata, "packages_distributions"):
 
 
 if __name__ == "__main__":
-    # Install global exception hook for testing
+    # Install global exception hook for testing ok
     import traceback
 
 
