@@ -30,7 +30,6 @@ msg = None
 host = 'localhost'
 user='root'
 password='byy184'
-# db_mysql='gmfldesktop12'
 db_mysql='egp12inch'
 
 # Source & table configuration
