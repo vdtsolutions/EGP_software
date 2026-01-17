@@ -233,7 +233,7 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         self.combo_tab9 = QComboBox()
 
         # analysis button
-        self.Analaysis_btn_tab9 = QPushButton("Analysis")
+        self.Analaysis_btn_tab9 = QPushButton("Analysis heatmap")
         self.Analaysis_btn_tab9.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
         self.Analaysis_btn_tab9.clicked.connect(self.run_analysis_thread)
 

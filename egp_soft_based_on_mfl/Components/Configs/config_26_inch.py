@@ -50,7 +50,7 @@ oddo2 = 0
 roll_value = -17.08
 pitch_value = -1.15
 yaw_value = 75.91
-
+oddo1_ref = oddo1
 # Pipe configefewflol
 pipe_thickness = 5.5
 outer_dia = 324
@@ -63,7 +63,7 @@ defect_box_thresh = 0.25
 
 # Sliding window / geometrical constants
 w_per_1 = 0.55
-oddo1_ref = oddo1
+
 div_factor = 1.15
 slope_per = 0.65
 
