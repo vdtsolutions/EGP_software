@@ -2988,7 +2988,7 @@ class Ui_MainWindow(QtWidgets.QWidget):
             options=options
         )
 
-        if file_path:  # If the user selects a file
+        if file_path:  # If the user selects a fileffsd
             # Ensure the file has the correct extension
             if not file_path.endswith('.xlsx'):
                 file_path += '.xlsx'
