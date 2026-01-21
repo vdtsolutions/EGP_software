@@ -5,7 +5,7 @@ from PyQt5.QtCore import Qt, QTimer, QPointF
 from PyQt5.QtGui import QPainter, QPen, QColor, QPainterPath
 
 VISUAL_REF_RADIUS = 150
-DEPTH_MOVED = {}  # injected from main
+DEPTH_MOVED = {}  # injected from main of this app
 
 
 class CircleWidget(QWidget):
