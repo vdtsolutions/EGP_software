@@ -25,7 +25,7 @@ import pymysql
 from PyQt5.QtCore import Qt, QUrl
 import sys
 #import WeldAndPipeLength
-from GMFL_12_Inch_Desktop.extras import weld_update
+# from GMFL_12_Inch_Desktop.extras import weld_update
 
 from google.cloud import bigquery
 import pandas as pd

@@ -1,10 +1,9 @@
 import os
 from pathlib import Path
 
-from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5 import QtWidgets, QtGui
 
-
-
+from egp_soft_based_on_mfl.Tabs.TAB_9_dent_analysis.modular_maker.embedded_app import CircularDentEmbedded
 from .widgets.screen_1 import build_screen1 as build_screen1_layout
 from .widgets.screen_2 import build_screen2 as build_screen2_layout
 from .widgets.tabs_builder import init_tab as tab_builder_screen2
@@ -87,6 +86,19 @@ class Ui_MainWindow(QtWidgets.QWidget):
             print("✅ Tabs 4–7 ENABLED")
         else:
             print("⏳ Not enabling yet…")
+
+    def launch_new_app_inside_tab(self):
+        if getattr(self, "_dent_loaded", False):
+            return
+
+        print("🌀 Loading Circular Dent app inside tab")
+
+        self.dent_widget = CircularDentEmbedded(self)
+        self.new_app_layout.addWidget(self.dent_widget)
+
+        self._dent_loaded = True
+
+
 
 
 

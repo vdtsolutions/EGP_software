@@ -79,6 +79,19 @@ def init_tab(self):
     self.right_tabWidget.setTabEnabled(graph_index, False)
     self.graph_tab_index = graph_index
 
+    # ---------------- NEW EMBEDDED APP TAB (RIGHT OF GRAPH) ----------------
+    self.new_app_tab = QtWidgets.QWidget()
+    self.new_app_layout = QtWidgets.QVBoxLayout(self.new_app_tab)
+    self.new_app_layout.setContentsMargins(0, 0, 0, 0)
+
+    new_app_index = self.right_tabWidget.addTab(
+        self.new_app_tab,
+        "Pipe Analysis"
+    )
+    self.right_tabWidget.setTabEnabled(new_app_index, True)
+
+    self.new_app_tab_index = new_app_index
+
     # Disable tabs 4–8 initially
     self.tabs_to_lock = [3, 4, 5]
     self.tabs_to_unlock = [3, 4, 5]
@@ -172,10 +185,22 @@ def handle_graph_tab_locked(self):
     )
 
 
+# def on_right_tab_changed(self, index):
+#     current_tab = self.right_tabWidget.widget(index)
+#
+#     if current_tab is self.Graph1:
+#         print("📈 Graph tab activated → launching Graph_app...")
+#         QTimer.singleShot(0, lambda: self.Graph1.Graph_app())
+
 def on_right_tab_changed(self, index):
-    current_tab = self.right_tabWidget.widget(index)
+    # NEW APP TAB
+    if index == self.new_app_tab_index:
+        print("🧩 New App tab activated → embedding app")
+        QTimer.singleShot(0, self.launch_new_app_inside_tab)
+        return
 
-    if current_tab is self.Graph1:
-        print("📈 Graph tab activated → launching Graph_app...")
-        QTimer.singleShot(0, lambda: self.Graph1.Graph_app())
-
+    # GRAPH TAB (existing behavior)
+    if index == self.graph_tab_index:
+        if self.Graph1 is not None:
+            print("📈 Graph tab activated → launching Graph_app...")
+            QTimer.singleShot(0, lambda: self.Graph1.Graph_app())
