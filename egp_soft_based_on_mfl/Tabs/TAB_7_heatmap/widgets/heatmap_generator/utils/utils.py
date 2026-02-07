@@ -285,8 +285,8 @@ def fetch_and_save_tab9_data(self, client, start_index, end_index, folder_path1,
     # Init Storage API client ONCE (reuses client each call)
     # -----------------------------------------------------------
     self.config.print_with_time("Start of conversion at : ")
-    if not hasattr(self, "_bqstorage_client") or self._bqstorage_client is None:
-        self._bqstorage_client = BigQueryReadClient()
+    # if not hasattr(self, "_bqstorage_client") or self._bqstorage_client is None:
+    #     self._bqstorage_client = BigQueryReadClient()
 
 
     bqstorage_client = bigquery_storage_v1.BigQueryReadClient(credentials=credentials)

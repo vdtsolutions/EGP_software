@@ -20,7 +20,7 @@ source_table_id = 'Egp_26_copy_x1'
 project_id = 'quantum-theme-334609'
 table_name = f"{project_id}.{source_dataset_id}.{source_table_id}"
 
-credentials = service_account.Credentials.from_service_account_file(r'D:\Anubhav\EGP_software\EGP_software\egp_soft_based_on_mfl\utils\Authorization.json')
+credentials = service_account.Credentials.from_service_account_file(r'D:\Anubhav\softwares\EGP_software\EGP_software\egp_soft_based_on_mfl\utils\Authorization.json')
 client = bigquery.Client(credentials=credentials, project=project_id)
 
 

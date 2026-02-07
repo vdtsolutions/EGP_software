@@ -332,15 +332,23 @@ class MainWindow(QMainWindow):
         Build time labels based on ALL_HALLS timeline,
         then pick only WORKING_HALLS from it.
         """
+        n = len(working_halls)
+        minute_step = 720 / n
 
         timeline_labels = {}
         total_minutes = 0
 
         # Step 1: build timeline for ALL_HALLS
-        for hall in all_halls:
+
+        for hall in working_halls:
             total_minutes += minute_step
-            mm = total_minutes % 60
-            hh = (total_minutes // 60) % 24
+
+            mm = int(total_minutes % 60)
+            hh = int((total_minutes // 60) % 24)
+
+            if hh == 0:
+                hh = 12
+
             timeline_labels[hall] = f"{hh:02d}:{mm:02d}"
 
         # Step 2: pick only working halls

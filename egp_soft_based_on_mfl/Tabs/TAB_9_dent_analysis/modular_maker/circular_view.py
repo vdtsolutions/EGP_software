@@ -41,12 +41,14 @@ class CircleWidget(QWidget):
 
         # 🔒 ANGLES ONLY FOR WORKING HALLS (DO NOT TOUCH)
         angle_step = 360 / len(self.working_halls)
+        print(f"angle step: {angle_step}")
         for i, hall in enumerate(self.working_halls):
             self.points[hall] = {
                 "angle": math.radians(i * angle_step - 90),
                 "current_r": VISUAL_REF_RADIUS,
                 "target_r": VISUAL_REF_RADIUS
             }
+            print(f"angle value for hall {hall} is f{self.points[hall]['angle']}")
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.animate)

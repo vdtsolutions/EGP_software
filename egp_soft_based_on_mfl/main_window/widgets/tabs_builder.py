@@ -71,7 +71,7 @@ def init_tab(self):
         self.continue_heatmap_tab,
         "Heatmap"
     )
-    self.right_tabWidget.setTabEnabled(self.heatmap_tab_index, False)
+    self.right_tabWidget.setTabEnabled(self.heatmap_tab_index, True)
 
     # Graph placeholder (disabled)
     self.graph_placeholder = QtWidgets.QWidget()
@@ -129,7 +129,7 @@ def handle_tab_click(self, index):
 
     print("CLICKED TAB:", index, repr(tab_text))
 
-    if tab_text in ["Graph", "Heatmap - Abs vs Orientation"]:
+    if tab_text in ["Graph"]:
         handle_graph_tab_locked(self)
         return
 
