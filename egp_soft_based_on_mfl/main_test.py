@@ -40,7 +40,7 @@ if __name__ == "__main__":
                     font-size: 12pt;
                 }
                 QMessageBox QLabel {
-                    font-size: 12pt;
+                    font-size: 12pt;                                        
                 }
                 QPushButton {
                     padding: 8px 20px;

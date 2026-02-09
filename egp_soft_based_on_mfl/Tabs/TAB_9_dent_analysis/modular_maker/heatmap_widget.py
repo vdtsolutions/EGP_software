@@ -100,33 +100,60 @@ class HeatmapWidget(QWidget):
         if self._cid_hover:
             self.canvas.mpl_disconnect(self._cid_hover)
 
-        self._cid_click = self.canvas.mpl_connect(
-            "button_press_event", self._on_click
-        )
+        # self._cid_click = self.canvas.mpl_connect(
+        #     "button_press_event", self._on_click
+        # )
         self._cid_hover = self.canvas.mpl_connect(
             "motion_notify_event", self._on_hover
         )
 
     # ------------------------------------------------
+    # def _on_hover(self, event):
+    #     if event.xdata is None or event.ydata is None:
+    #         return
+    #
+    #     try:
+    #         x = int(event.xdata)
+    #         y = int(event.ydata)
+    #
+    #         index_val = self.index_list[x]
+    #         clock = y
+    #         oddo = self.oddo_list[x]
+    #
+    #         self.setToolTip(
+    #             f"Index: {index_val}\n"
+    #             f"Oddo: {oddo/1000:.3f} m\n"
+    #             f"Clock row: {y}"
+    #         )
+    #     except Exception:
+    #         pass
+
     def _on_hover(self, event):
-        if event.xdata is None or event.ydata is None:
+        if event.inaxes != self.ax:
+            return
+        if event.xdata is None:
             return
 
-        try:
-            x = int(event.xdata)
-            y = int(event.ydata)
+        x = int(round(event.xdata))
+        if x < 0 or x >= len(self.index_list):
+            return
 
-            index_val = self.index_list[x]
-            clock = y
-            oddo = self.oddo_list[x]
+        # prevent repeated updates while mouse stays in same column
+        if getattr(self, "_last_hover_x", None) == x:
+            return
 
-            self.setToolTip(
-                f"Index: {index_val}\n"
-                f"Oddo: {oddo/1000:.3f} m\n"
-                f"Clock row: {y}"
-            )
-        except Exception:
-            pass
+        self._last_hover_x = x
+
+        index_val = self.index_list[x]
+        oddo = self.oddo_list[x]
+
+        self.setToolTip(
+            f"Index: {index_val}\n"
+            f"Oddo: {oddo / 1000:.3f} m"
+        )
+
+        # ← THIS replaces click behavior
+        self.on_index_selected(index_val)
 
     # ------------------------------------------------
     def _on_click(self, event):
