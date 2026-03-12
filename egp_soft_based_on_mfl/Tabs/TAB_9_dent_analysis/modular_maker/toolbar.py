@@ -100,6 +100,8 @@ class VDTToolbar(QFrame):
 
 
         self.update()
+
+
     def build_pipe_id_index_mapping(self):
         cursor = self.connection.cursor()
         cursor.execute(

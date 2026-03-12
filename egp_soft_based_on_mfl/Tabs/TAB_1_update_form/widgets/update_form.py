@@ -29,7 +29,7 @@ class UpdateForm(QtWidgets.QWidget):
         self.form_layout_inside_tab.setSpacing(15)
 
         # === Title ===
-        title = QtWidgets.QLabel("Update Project Details", self)
+        title = QtWidgets.QLabel("Project Details", self)
         title.setAlignment(QtCore.Qt.AlignCenter)
         title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 20px;")
         self.form_layout_inside_tab.setWidget(0, QtWidgets.QFormLayout.SpanningRole, title)
@@ -69,17 +69,17 @@ class UpdateForm(QtWidgets.QWidget):
             self.form_layout_inside_tab.setWidget(i, 1, right)
 
         # === Buttons ===
-        self.pushButton = QtWidgets.QPushButton("Attach File", self)
-        self.pushButton.setStyleSheet(Style.btn_type_secondary)
-        self.pushButton.setFixedWidth(500)
-        self.pushButton.clicked.connect(self.upload_data)
+        # self.pushButton = QtWidgets.QPushButton("Attach File", self)
+        # self.pushButton.setStyleSheet(Style.btn_type_secondary)
+        # self.pushButton.setFixedWidth(500)
+        # self.pushButton.clicked.connect(self.upload_data)
 
         self.btn1 = QtWidgets.QPushButton("Update", self)
         self.btn1.setStyleSheet(Style.btn_type_primary)
         self.btn1.setFixedWidth(500)
         self.btn1.clicked.connect(self.update_data)
 
-        self.form_layout_inside_tab.setWidget(len(fields) + 1, 0, self.pushButton)
+        # self.form_layout_inside_tab.setWidget(len(fields) + 1, 0, self.pushButton)
         self.form_layout_inside_tab.setWidget(len(fields) + 1, 1, self.btn1)
 
         hbox.addWidget(self.formLayoutWidget)

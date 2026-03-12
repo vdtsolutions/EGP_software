@@ -60,7 +60,7 @@ def init_tab(self):
     self.pipetally_loaded = False
 
     # Add tabs
-    self.right_tabWidget.addTab(self.tab_update, "Update")
+    self.right_tabWidget.addTab(self.tab_update, "Pipeline Detail")
     self.right_tabWidget.addTab(self.tab_weld_selection, "Weld Selection")
     self.right_tabWidget.addTab(self.tab_showData, "Data Table")
     self.right_tabWidget.addTab(self.tab_line1.tab_line1, "Counter vs Sensor")

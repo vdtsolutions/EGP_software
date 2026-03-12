@@ -1,10 +1,11 @@
 from PyQt5.QtWidgets import QMessageBox
 
-from egp_soft_based_on_mfl.Components import CreateProject, endcounter_to_startcounter_distance
+from egp_soft_based_on_mfl.Components import endcounter_to_startcounter_distance
+from egp_soft_based_on_mfl.main_window.widgets.menubar.file_menu.create_project import AddProject
 
 
 def create_project(self):
-    self.uploadData = CreateProject.AddProject()
+    self.uploadData = AddProject()
 
 def endcounter_to_startcounter(self):
     try:
