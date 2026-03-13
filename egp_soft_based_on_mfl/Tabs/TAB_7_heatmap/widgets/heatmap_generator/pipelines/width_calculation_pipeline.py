@@ -170,7 +170,7 @@ def ML_width_calc(self, output_dir, runid, pipe_id):
 
 def model_width(self, model, folder_path, runid, pipe_id):
     # query = "select id, speed, start_sensor, end_sensor, width_new2 from bb_new"
-    query = "select defect_id, runid, pipe_id, speed,start_index, end_index, start_sensor, end_sensor, width_new2 from defect_clock_hm"
+    query = "select defect_id, runid, pipe_id, speed,start_index, end_index, start_sensor, end_sensor, width_new2 from dent_clock_hm"
     df_meta = pd.read_sql_query(query, self.config.connection)
     df_meta.rename(columns={'defect_id': 'def_no.', 'width_new2': 'pred_width'}, inplace=True)
     # before
@@ -288,7 +288,7 @@ def model_width(self, model, folder_path, runid, pipe_id):
 
         try:
             cursor.execute(
-                "UPDATE defect_clock_hm SET width_final = %s WHERE defect_id = %s AND runid = %s AND pipe_id = %s",
+                "UPDATE dent_clock_hm SET width_final = %s WHERE defect_id = %s AND runid = %s AND pipe_id = %s",
                 (float(pred_val), int(defect_no), int(runid), int(pipe_id))
             )
             if cursor.rowcount == 0:

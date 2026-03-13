@@ -109,47 +109,47 @@ def plot_linechart_sensor(self, df_pipe):
     #     'F20P4', 'F21P1', 'F22P2', 'F23P3', 'F24P4', 'F25P1', 'F26P2', 'F27P3', 'F28P4',
     #     'F29P1', 'F30P2', 'F31P3', 'F32P4', 'F33P1', 'F34P2', 'F35P3', 'F36P4'
     # ]
-    df_proxi_data = self.config.sensor_columns_prox
+    # df_proxi_data = self.config.sensor_columns_prox
+    #
+    # scaler = MinMaxScaler()
+    # scaled_values = scaler.fit_transform(df_pipe[df_proxi_data])
+    # for i, col in enumerate(df_proxi_data):
+    #     df_pipe[col] = scaled_values[:, i]
+    #
+    # n = 15
+    # b = [1.0 / n] * n
+    # a = 1
+    # ls = [round(i * 0.3, 1) for i in range(1, 37)]
+    #
+    # for j1, column2 in enumerate(df_proxi_data):
+    #     df_pipe[column2] = df_pipe[column2] + ls[j1]
 
-    scaler = MinMaxScaler()
-    scaled_values = scaler.fit_transform(df_pipe[df_proxi_data])
-    for i, col in enumerate(df_proxi_data):
-        df_pipe[col] = scaled_values[:, i]
-
-    n = 15
-    b = [1.0 / n] * n
-    a = 1
-    ls = [round(i * 0.3, 1) for i in range(1, 37)]
-
-    for j1, column2 in enumerate(df_proxi_data):
-        df_pipe[column2] = df_pipe[column2] + ls[j1]
-
-    fig = go.Figure()
-    for i1, column1 in enumerate(df_proxi_data):
-        yy = lfilter(b, a, df_pipe[column1])
-        fig.add_trace(go.Scatter(x=df_pipe.index, y=yy, name=column1))
-
-    fig.update_layout(
-        width=1800,
-        height=400,
-        title={'x': 0.5},
-        font={"family": "courier"},
-    )
-    fig.update_xaxes(
-        title_text="ODDO1(Absolute Distance(m))",
-        tickfont=dict(size=11),
-        dtick=1000,
-        tickangle=0,
-        showticklabels=True,
-        ticklen=0,
-    )
+    # fig = go.Figure()
+    # for i1, column1 in enumerate(df_proxi_data):
+    #     yy = lfilter(b, a, df_pipe[column1])
+    #     fig.add_trace(go.Scatter(x=df_pipe.index, y=yy, name=column1))
+    #
+    # fig.update_layout(
+    #     width=1800,
+    #     height=400,
+    #     title={'x': 0.5},
+    #     font={"family": "courier"},
+    # )
+    # fig.update_xaxes(
+    #     title_text="ODDO1(Absolute Distance(m))",
+    #     tickfont=dict(size=11),
+    #     dtick=1000,
+    #     tickangle=0,
+    #     showticklabels=True,
+    #     ticklen=0,
+    # )
 
 
-    #saving proximity line chart
-    file_path = gmfl_path("h_line_chart_proxi.html")
-    print(f"file path: ----- {file_path}")
-    pio.write_html(fig, file=file_path, auto_open=False)
-    self.m_output_proxi.load(QUrl.fromLocalFile(file_path))
+    # #saving proximity line chart
+    # file_path = gmfl_path("h_line_chart_proxi.html")
+    # print(f"file path: ----- {file_path}")
+    # pio.write_html(fig, file=file_path, auto_open=False)
+    # self.m_output_proxi.load(QUrl.fromLocalFile(file_path))
 
     self.canvas_x5.draw()
     self.config.print_with_time("End plotting at : ")

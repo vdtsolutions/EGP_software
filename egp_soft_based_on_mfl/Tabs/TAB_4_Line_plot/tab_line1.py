@@ -1,11 +1,15 @@
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
-from PyQt5 import QtWidgets, QtWebEngineWidgets
+from PyQt5 import QtWidgets, QtWebEngineWidgets, QtCore
 import os
 
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+from .widgets.helper_functions import plot_linechart_sensor
+from .widgets.tab4_loading_dialog_worker import LineChart1Worker
+from ...Components.style1 import PROFESSIONAL_BUTTON_STYLE, next_prev_btn
+from ...utils.loaderdialog.loader_dialog import LoaderDialog
 
 '''
     Imports for Functions 
@@ -48,26 +52,7 @@ class LinePlotTab:
     # =====================================================
     def _setup_tab(self):
         """Sets up all widgets and layouts (logic unchanged)."""
-        PROFESSIONAL_BUTTON_STYLE = """
-        QPushButton {
-            font-size: 13px;
-            font-family: 'Segoe UI', Arial;
-            font-weight: 600;
-            padding: 4px 14px;
-            color: white;
-            background-color: #2F5EF9;
-            border: 1px solid #1537B3;
-            border-radius: 0px;  /* rectangular */
-        }
-        QPushButton:hover {
-            background-color: #1E4BE0;
-            border-color: #102F9A;
-        }
-        QPushButton:pressed {
-            background-color: #153CC0;
-            border-color: #0C267B;
-        }
-        """
+
 
         # ---- Create Tab Widget ----
         self.tab_line1 = QtWidgets.QWidget()
@@ -104,9 +89,9 @@ class LinePlotTab:
         self.selection_mark_lat_long.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
         self.selection_mark_lat_long.clicked.connect(lambda: mark_lat_long(self))
 
-        self.selection_mark_base_value = QtWidgets.QPushButton("Mark Base Value")
-        self.selection_mark_base_value.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
-        self.selection_mark_base_value.clicked.connect(lambda: basevalue(self))
+        # self.selection_mark_base_value = QtWidgets.QPushButton("Mark Base Value")
+        # self.selection_mark_base_value.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
+        # self.selection_mark_base_value.clicked.connect(lambda: basevalue(self))
 
 
         self.feature_selection = QtWidgets.QPushButton("Mark Feature")
@@ -123,12 +108,12 @@ class LinePlotTab:
         self.button_x5.clicked.connect(lambda: Line_chart1(self))
         self.button_x5.resize(50, 50)
 
-        self.next_btn_lc = QtWidgets.QPushButton("Next")
-        self.next_btn_lc.setStyleSheet("background-color: white; color: black;")
+        self.next_btn_lc = QtWidgets.QPushButton("Next  →")
+        self.next_btn_lc.setStyleSheet(next_prev_btn)
         self.next_btn_lc.clicked.connect(lambda: Line_chart1_next(self))
 
-        self.prev_btn_lc = QtWidgets.QPushButton("Previous")
-        self.prev_btn_lc.setStyleSheet("background-color: white; color: black;")
+        self.prev_btn_lc = QtWidgets.QPushButton("←  Previous")
+        self.prev_btn_lc.setStyleSheet(next_prev_btn)
         self.prev_btn_lc.clicked.connect(lambda: Line_chart1_previous(self))
 
         # ---- Navigation Layout ----
@@ -140,18 +125,18 @@ class LinePlotTab:
         button_layout_widget.setLayout(button_layout)
 
         # ---- Web Output View ----
-        self.m_output_proxi = QtWebEngineWidgets.QWebEngineView(self.tab_line1)
+        # self.m_output_proxi = QtWebEngineWidgets.QWebEngineView(self.tab_line1)
 
         # ---- Main Layout Hierarchy ----
         self.hb5.addLayout(self.vb5, 75)
 
         self.hbox_5 = QtWidgets.QHBoxLayout()
         self.hbox_6 = QtWidgets.QHBoxLayout()
-        self.hbox_7 = QtWidgets.QHBoxLayout()
+        # self.hbox_7 = QtWidgets.QHBoxLayout()
 
         self.vb5.addLayout(self.hbox_5)
-        self.vb5.addLayout(self.hbox_6, 60)
-        self.vb5.addLayout(self.hbox_7, 40)
+        self.vb5.addLayout(self.hbox_6)
+        # self.vb5.addLayout(self.hbox_7, 40)
         self.vb5.addWidget(button_layout_widget)
 
         # ---- Top Toolbar Section ----
@@ -161,19 +146,38 @@ class LinePlotTab:
         self.hbox_5.addWidget(self.latitude)
         self.hbox_5.addWidget(self.logitude)
         self.hbox_5.addWidget(self.selection_mark_lat_long)
-        self.hbox_5.addWidget(self.selection_mark_base_value)
+        # self.hbox_5.addWidget(self.selection_mark_base_value)
         self.hbox_5.addWidget(self.feature_selection)
         self.hbox_5.addWidget(self.reset_btn)
 
         # ---- Chart and Output ----
         self.hbox_6.addWidget(self.canvas_x5)
-        self.hbox_7.addWidget(self.m_output_proxi)
+        # self.hbox_7.addWidget(self.m_output_proxi)
 
         self.tab_line1.setLayout(self.hb5)
 
         """
         -------> End of fourth tab (Line Plotting)
         """
+
+    def Line_chart1_finished(self, df_pipe):
+        if df_pipe is None:
+            self.loader.close()
+            return
+
+        self.loader.update_status("Rendering chart...")
+        self.loader.update_progress(95)
+
+        QtWidgets.QApplication.processEvents()
+
+        plot_linechart_sensor(self, df_pipe)
+
+        self.loader.update_progress(100)
+        self.loader.update_status("Completed")
+
+        QtCore.QTimer.singleShot(300, self.loader.close)
+
+
 
 
 

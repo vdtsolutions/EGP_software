@@ -27,16 +27,16 @@ app = None
 msg = None
 
 #localdb connection for mysql
-host = 'localhost'
-user='root'
-password='byy184'
-db_mysql='egp12inch'
+# host = 'localhost'
+# user='root'
+# password='byy184'
+db_mysql='egp26inch'
 
 # Source & table configuration
 source_dataset_id = 'Egp_26inch_processed_data'
-source_table_id = 'Egp_26_copy_x1'
+# source_table_id = 'Egp_26_copy_x1'
 project_id = 'quantum-theme-334609'
-table_name = f"{project_id}.{source_dataset_id}.{source_table_id}"
+# table_name = f"{project_id}.{source_dataset_id}.{source_table_id}"
 
 
 

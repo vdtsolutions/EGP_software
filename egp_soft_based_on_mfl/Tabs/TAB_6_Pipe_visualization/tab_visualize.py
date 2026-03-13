@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, Qt
 from PyQt5.QtWidgets import QComboBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
@@ -7,9 +7,11 @@ import matplotlib.pyplot as plt
 
 from .widgets.Analysis_btn import pre_graph_analysis
 from .widgets.reset_next_prev_btn import reset_btn_fun_pipe, graph_analysis_next, graph_analysis_previous
-from .widgets.helper_func import box_selection_all_defect, generate_report
-
-
+from .widgets.helper_func import box_selection_all_defect, generate_report, open_context_menu, \
+    handle_table_double_click_pipe
+from .widgets.tab_6_loader_worker import PreGraphWorker
+from ...Components.style1 import next_prev_btn
+from ...utils.loaderdialog.loader_dialog import LoaderDialog
 
 
 class VisualizeTab(QtWidgets.QWidget):
@@ -92,7 +94,7 @@ class VisualizeTab(QtWidgets.QWidget):
         """
         self.Analaysis_pushButton = QtWidgets.QPushButton("Analysis")
         self.Analaysis_pushButton.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
-        self.Analaysis_pushButton.clicked.connect(lambda: pre_graph_analysis(self))
+        self.Analaysis_pushButton.clicked.connect(self.run_pre_graph_analysis)
 
         """
         Generate button inside the fifth tab
@@ -100,12 +102,12 @@ class VisualizeTab(QtWidgets.QWidget):
         self.generatepushButton = QtWidgets.QPushButton("Generate Report")
         self.generatepushButton.clicked.connect(lambda: generate_report(self))
 
-        self.next_btn_pre = QtWidgets.QPushButton('Next')
-        self.next_btn_pre.setStyleSheet("background-color: white; color: black;")
+        self.next_btn_pre = QtWidgets.QPushButton('Next  →')
+        self.next_btn_pre.setStyleSheet(next_prev_btn)
         self.next_btn_pre.clicked.connect(lambda: graph_analysis_next(self))
 
-        self.prev_btn_pre = QtWidgets.QPushButton('Previous')
-        self.prev_btn_pre.setStyleSheet("background-color: white; color: black;")
+        self.prev_btn_pre = QtWidgets.QPushButton('←  Previous')
+        self.prev_btn_pre.setStyleSheet(next_prev_btn)
         self.prev_btn_pre.clicked.connect(lambda: graph_analysis_previous(self))
 
         button_layout = QtWidgets.QHBoxLayout()
@@ -171,3 +173,65 @@ class VisualizeTab(QtWidgets.QWidget):
         self.setLayout(self.hbox_8)
         # ---- END: original code verbatim style ----
 
+    def run_pre_graph_analysis(self):
+
+        self.loader = LoaderDialog(self, "Generating Weld Graph")
+
+        self.worker = PreGraphWorker(self)
+
+        # worker → loader
+        self.worker.progress.connect(self.loader.update_progress)
+        self.worker.message.connect(self.loader.update_status)
+
+        # worker → UI renderer
+        self.worker.finished.connect(self.pre_graph_finished)
+
+        # cancel handling
+        # self.loader.cancelled.connect(self.worker.stop)
+        # self.loader.cancelled.connect(self.loader.show_cancelling)
+
+        self.loader.show()
+        self.worker.start()
+
+    def pre_graph_finished(self, defects):
+
+        if defects is None:
+            self.loader.close()
+            return
+
+        self.loader.update_status("Rendering graph...")
+        self.loader.update_progress(95)
+
+        QtWidgets.QApplication.processEvents()
+
+        self.myTableWidget3.setRowCount(0)
+
+        for row_number, row_data in enumerate(defects):
+
+            self.myTableWidget3.insertRow(row_number)
+
+            for column_num, data in enumerate(row_data):
+                self.myTableWidget3.setItem(
+                    row_number,
+                    column_num,
+                    QtWidgets.QTableWidgetItem(str(data))
+                )
+
+        # restore your original behaviour
+        self.myTableWidget3.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.myTableWidget3.customContextMenuRequested.connect(
+            lambda: open_context_menu(self)
+        )
+
+        self.myTableWidget3.doubleClicked.connect(
+            lambda: handle_table_double_click_pipe(self)
+        )
+
+        self.pre_graph_load_finished()
+
+    def pre_graph_load_finished(self):
+
+        self.loader.update_progress(100)
+        self.loader.update_status("Completed")
+
+        QtCore.QTimer.singleShot(300, self.loader.close)

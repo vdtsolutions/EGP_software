@@ -582,7 +582,7 @@ def on_apply_clicked(self):
     inch = inch_match[0]
 
     # 3️⃣ Build table id
-    self.config.source_table_id = f"Main_{inch}_copy_x{runid}"
+    self.config.source_table_id = f"Egp_{inch}_copy_x{runid}"
     self.config.table_name = (
         f"{self.config.project_id}."
         f"{self.config.source_dataset_id}."

@@ -22,6 +22,7 @@ from .widgets.helper_func import reset_btn_fun_chm, all_box_selection_ori_heatma
 from .widgets.heatmap_generator.tab9_heatmap import tab9_heatmap
 from .widgets.next_prev_btn import tab9_heatmap_previous, tab9_heatmap_next
 from ...Components.dig.runners.disgheet_abs_runner import DigsheetABSRunner
+from ...Components.style1 import next_prev_btn
 
 GMFL_ROOT = Path(__file__).resolve().parents[2]
 
@@ -224,7 +225,7 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         self.reset_btn_tab9.setVisible(True)  # initially hidden
 
         # defect selection button
-        self.all_box_selection1 = QPushButton("Defect Selection")
+        self.all_box_selection1 = QPushButton("Dent Selection")
         self.all_box_selection1.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
         self.all_box_selection1.clicked.connect(lambda: all_box_selection_ori_heatmap(self))
         self.all_box_selection1.setVisible(True)  # initially hidden
@@ -238,12 +239,12 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         self.Analaysis_btn_tab9.clicked.connect(self.run_analysis_thread)
 
         # pagination / export buttons
-        self.next_btn_hm = QPushButton("Next")
-        self.next_btn_hm.setStyleSheet("background-color: white; color: black;")
+        self.next_btn_hm = QPushButton("Next  →")
+        self.next_btn_hm.setStyleSheet(next_prev_btn)
         self.next_btn_hm.clicked.connect(lambda: tab9_heatmap_next(self))
 
-        self.prev_btn_hm = QPushButton("Previous")
-        self.prev_btn_hm.setStyleSheet("background-color: white; color: black;")
+        self.prev_btn_hm = QPushButton("←  Previous")
+        self.prev_btn_hm.setStyleSheet(next_prev_btn)
         self.prev_btn_hm.clicked.connect(lambda: tab9_heatmap_previous(self))
 
         self.digsheet_btn = QPushButton("Generate Dig")
@@ -485,12 +486,12 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
         # --- Fill SQL table ---
         with self.config.connection.cursor() as cursor:
             Fetch_weld_detail = """
-                SELECT id,pipe_id, WT, Absolute_distance,Upstream,
-                       feature_type,Orientation,
-                       length,Width,depth
-                FROM dent_clock_hm
-                WHERE runid=%s AND pipe_id=%s
-            """
+                           SELECT id,pipe_id,`WT(mm)`,absolute_distance,upstream,
+                                  defect_type,dimension_classification,orientation,
+                                  length,Width_final,depth_new
+                           FROM dent_clock_hm
+                           WHERE runid=%s AND pipe_id=%s
+                       """
             cursor.execute(Fetch_weld_detail, (self.runid, self.Weld_id_tab9))
             rows = cursor.fetchall()
 
@@ -608,7 +609,7 @@ class ContinueHeatmapTab(QtWidgets.QWidget):
 
         # 🟢 SQL TABLE FILLING BLOCK GOES HERE
         with self.config.connection.cursor() as cursor:
-            Fetch_weld_detail = "select id,pipe_id,`WT(mm)`,absolute_distance,upstream,defect_type,dimension_classification,orientation,length,Width_final,depth_new from defect_clock_hm where runid='%s' and pipe_id='%s'"
+            Fetch_weld_detail = "select id,pipe_id,`WT(mm)`,absolute_distance,upstream,defect_type,dimension_classification,orientation,length,Width_final,depth_new from dent_clock_hm where runid='%s' and pipe_id='%s'"
             cursor.execute(Fetch_weld_detail, (self.runid, self.Weld_id_tab9))
             self.myTableWidget_tab9.setRowCount(0)
             allSQLRows = cursor.fetchall()

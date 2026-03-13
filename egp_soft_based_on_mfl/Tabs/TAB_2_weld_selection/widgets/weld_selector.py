@@ -1,20 +1,10 @@
 from matplotlib.widgets import RectangleSelector
 # from concurrent.futures import ProcessPoolExecutor
 from concurrent.futures import ThreadPoolExecutor
-
-import os, json
-from google.cloud import bigquery
 import matplotlib.pyplot as plt
 import pandas as pd
+from egp_soft_based_on_mfl.Components.Configs import config_universal
 from .helper_func import func, select_weld
-from egp_soft_based_on_mfl.Components.Configs import config_old as config
-
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"D:\Anubhav\EGP_software\EGP_software\egp_soft_based_on_mfl\utils\GCS_Auth.json"
-connection = config.connection
-credentials = config.credentials
-project_id = config.project_id
-client = bigquery.Client(credentials=credentials, project=project_id)
-# config = json.loads(open(r'D:\Anubhav\vdt_backend\egp_soft_based_on_mfl\utils\proximity_base_value.json').read())
 
 
 
@@ -35,7 +25,7 @@ def weld_selection(self):
     New Code
     """
     future = []
-    config.print_with_time("Start_time")
+    config_universal.print_with_time("Start_time")
     # executor = ProcessPoolExecutor(10)
     executor = ThreadPoolExecutor(max_workers=10)
     x = 20000
@@ -64,7 +54,7 @@ def weld_selection(self):
         self.a2.append(df_plot_data1[data] + i * 1400)
     self.ax15.set_ylabel('Hall Sensor')
     self.canvas_x15.draw()
-    config.print_with_time("End_time")
+    config_universal.print_with_time("End_time")
     self.rs2 = RectangleSelector(self.ax15, lambda eclick, erelease: select_weld(self, eclick, erelease), useblit=True)
     plt.connect('key_press_event', self.rs2)
 

@@ -836,7 +836,7 @@ def show_name_dialog_chm(self):
                     latitude = i['latitude']
                     longitude = i['longitude']
                     # with self.config.connection.cursor() as cursor:
-                    #     query_defect_insert = "INSERT into defect_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+                    #     query_defect_insert = "INSERT into dent_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
                     #
                     #     cursor.execute(query_defect_insert, (
                     #         int(runid), self.Weld_id_tab9, self.pipe_len_oddo1_chm, start_index, end_index,
@@ -845,7 +845,7 @@ def show_name_dialog_chm(self):
                     #         defect_type,base_value,  WT, speed, latitude, longitude))
                     #
                     # self.config.connection.commit()
-                    query_defect_insert = "INSERT into defect_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+                    query_defect_insert = "INSERT into dent_clock_hm(runid, pipe_id, pipe_length, start_index, end_index, start_sensor, end_sensor, upstream, absolute_distance, orientation, length, Width, width_final, depth_new,max_value, min_value, l_per1, dimension_classification,defect_type, mean_value, `WT(mm)`, speed, latitude, longitude) VALUE(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) "
                     try:
                         with self.config.connection.cursor() as cursor:
                             cursor.execute(query_defect_insert, (int(runid), self.Weld_id_tab9, self.pipe_len_oddo1_chm, start_index, end_index,
@@ -861,7 +861,7 @@ def show_name_dialog_chm(self):
                     QMessageBox.information(self, 'Success', 'Data saved')
 
                     with self.config.connection.cursor() as cursor:
-                        Fetch_weld_detail = "select id,pipe_id,`WT(mm)`,absolute_distance,upstream,defect_type,dimension_classification,orientation,length,width_final,depth_new from defect_clock_hm where runid='%s' and pipe_id='%s'"
+                        Fetch_weld_detail = "select id,pipe_id,`WT(mm)`,absolute_distance,upstream,defect_type,dimension_classification,orientation,length,width_final,depth_new from dent_clock_hm where runid='%s' and pipe_id='%s'"
                         # Execute query.
                         cursor.execute(Fetch_weld_detail, (int(self.runid), int(self.Weld_id_tab9)))
                         self.myTableWidget_tab9.setRowCount(0)
@@ -888,7 +888,7 @@ def refresh_tab9_table(self):
         Fetch = """SELECT id,pipe_id,`WT(mm)`,absolute_distance,upstream,
                           defect_type,dimension_classification,orientation,
                           length,width_final,depth_new
-                   FROM defect_clock_hm
+                   FROM dent_clock_hm
                    WHERE runid=%s AND pipe_id=%s"""
         cursor.execute(Fetch, (self.runid, self.Weld_id_tab9))
         rows = cursor.fetchall()

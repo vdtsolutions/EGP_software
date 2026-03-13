@@ -1,12 +1,18 @@
 # orientation_tab5.py
-from PyQt5 import QtWidgets, QtWebEngineWidgets
+from PyQt5 import QtWidgets, QtWebEngineWidgets, QtCore
 from PyQt5.QtWidgets import QComboBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
-
-from .widgets.LineChart_draw import Line_chart_orientation
+from .widgets.loading_dialog_tab5 import LineChartWorker
 from .widgets.next_prev_btn_helper import Line_chart_orientation_next, Line_chart_orientation_previous
+from .widgets.render_linechart_tab5 import render_linechart_tab5
+from ...Components.style1 import next_prev_btn
+from ...utils.loaderdialog.loader_dialog import LoaderDialog
+
+
+
+
 
 class Tab5LineOrientation(QtWidgets.QWidget):
     """Self-contained Tab 5 with its own UI and button logic."""
@@ -67,14 +73,16 @@ class Tab5LineOrientation(QtWidgets.QWidget):
         self.button_x5_orienatation = QtWidgets.QPushButton('Line Chart 2')
         self.button_x5_orienatation.setStyleSheet(PROFESSIONAL_BUTTON_STYLE)
         self.button_x5_orienatation.resize(50, 50)
-        self.button_x5_orienatation.clicked.connect(lambda: Line_chart_orientation(self))
+        # self.button_x5_orienatation.clicked.connect(lambda: Line_chart_orientation(self))
+        self.button_x5_orienatation.clicked.connect(self.run_line_chart)
 
-        self.next_btn_lc_orienatation = QtWidgets.QPushButton('Next')
-        self.next_btn_lc_orienatation.setStyleSheet("background-color: white; color: black;")
+
+        self.next_btn_lc_orienatation = QtWidgets.QPushButton('Next  →')
+        self.next_btn_lc_orienatation.setStyleSheet(next_prev_btn)
         self.next_btn_lc_orienatation.clicked.connect(lambda: Line_chart_orientation_next(self))
 
-        self.prev_btn_lc_orienatation = QtWidgets.QPushButton('Previous')
-        self.prev_btn_lc_orienatation.setStyleSheet("background-color: white; color: black;")
+        self.prev_btn_lc_orienatation = QtWidgets.QPushButton('←  Previous')
+        self.prev_btn_lc_orienatation.setStyleSheet(next_prev_btn)
         self.prev_btn_lc_orienatation.clicked.connect(lambda: Line_chart_orientation_previous(self))
 
         # ---------------- button row ----------------
@@ -104,3 +112,43 @@ class Tab5LineOrientation(QtWidgets.QWidget):
         self.hbox_5_orientation.addWidget(self.button_x5_orienatation)
         self.hbox_6_orientation.addWidget(self.m_output_orientation)
 
+        self.m_output_orientation.loadFinished.connect(self.chart_load_finished)
+
+
+    def run_line_chart(self):
+        self.loader = LoaderDialog(self, "Generating Line Chart")
+
+        self.worker = LineChartWorker(self)
+
+        # worker → loader
+        self.worker.progress.connect(self.loader.update_progress)
+        self.worker.message.connect(self.loader.update_status)
+
+        # worker → chart renderer
+        self.worker.finished.connect(self.line_chart_finished)
+
+        # cancel handling
+        # self.loader.cancelled.connect(self.worker.stop)
+        # self.loader.cancelled.connect(self.loader.show_cancelling)
+
+        self.loader.show()
+        self.worker.start()
+
+    def line_chart_finished(self, df):
+        if df is None:
+            self.loader.close()
+            return
+
+        self.loader.update_status("Rendering chart...")
+        self.loader.update_progress(95)
+
+        QtWidgets.QApplication.processEvents()
+
+        # Render chart
+        render_linechart_tab5(self, df)
+
+    def chart_load_finished(self):
+        self.loader.update_progress(100)
+        self.loader.update_status("Completed")
+
+        QtCore.QTimer.singleShot(300, self.loader.close)

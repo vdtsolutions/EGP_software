@@ -42,15 +42,64 @@ menubar = """
 #         color: white;
 #     }
 # """
+PROFESSIONAL_BUTTON_STYLE = """
+        QPushButton {
+            font-size: 13px;
+            font-family: 'Segoe UI', Arial;
+            font-weight: 600;
+            padding: 4px 14px;
+            color: white;
+            background-color: #2F5EF9;
+            border: 1px solid #1537B3;
+            border-radius: 0px;  /* rectangular */
+        }
+        QPushButton:hover {
+            background-color: #1E4BE0;
+            border-color: #102F9A;
+        }
+        QPushButton:pressed {
+            background-color: #153CC0;
+            border-color: #0C267B;
+        }
+        """
 
-tab_bar_style = """
-QTabWidget::pane {
+
+next_prev_btn = """
+        QPushButton {
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        QPushButton:hover {
+            background-color: #111111;
+            border: 2px solid #ffffff;
+        }
+
+        QPushButton:pressed {
+            background-color: #222222;
+            padding-left: 20px;
+        }
+
+        QPushButton:disabled {
+            color: #777777;
+            border: 2px solid #555555;
+        }
+        """
+def tab_bar_style(tab_min_width):
+    print("inside tab_bar_style function in style1.py")
+    return f"""
+QTabWidget::pane {{
     border: 1px solid #d0d0d0;
     background: #ffffff;
     border-radius: 6px;
-}
+}}
 
-QTabBar::tab {
+QTabBar::tab {{
     background: #f1f1f1;
     color: #333333;
     padding: 8px 18px;
@@ -58,26 +107,25 @@ QTabBar::tab {
     border: 1px solid #cccccc;
     border-radius: 6px;
     font-size: 10.5px;
-    min-width: 195px;   
+    min-width: {tab_min_width}px;
     font-weight: bold;
+}}
 
-}
-
-QTabBar::tab:hover {
+QTabBar::tab:hover {{
     background: #e6e6e6;
     border: 1px solid #bbbbbb;
-}
+}}
 
-QTabBar::tab:selected {
+QTabBar::tab:selected {{
     background: #0078d7;
     color: white;
     border: 1px solid #005a9e;
     font-weight: bold;
-}
+}}
 
-QTabBar::tab:!selected {
-    margin-top: 4px; /* makes selected tab look raised */
-}
+QTabBar::tab:!selected {{
+    margin-top: 4px;
+}}
 """
 
 

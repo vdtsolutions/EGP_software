@@ -111,7 +111,7 @@ def insert_defects_to_db_defect_clock_hm(connection, finial_defect_list, submatr
             WT_mm = i['wall_thickness']
 
             query_defect_insert = """
-                INSERT INTO defect_clock_hm(runid, pipe_id, defect_id, pipe_length, start_index, end_index, start_sensor, end_sensor,upstream, 
+                INSERT INTO dent_clock_hm(runid, pipe_id, defect_id, pipe_length, start_index, end_index, start_sensor, end_sensor,upstream, 
                 absolute_distance, length, length_percent, Width, width_new2,
                  depth_old, depth_new ,orientation, defect_type, dimension_classification, start_oddo1, end_oddo1, speed,
                 min_value, max_value, `WT(mm)`)

@@ -27,25 +27,39 @@ class ClickableTabBar(QtWidgets.QTabBar):
 
 def init_tab(self):
     self.right_tabWidget = QtWidgets.QTabWidget()
+    print("Screen width:", QtWidgets.QApplication.primaryScreen().size().width())
+    print("Window width:", self.width())
+    screen_width = QtWidgets.QApplication.primaryScreen().size().width()
+
+    if screen_width >= 1900:
+        tab_width = 167
+    elif screen_width >= 1600:
+        tab_width = 142
+    elif screen_width >= 1366:
+        tab_width = 79
+    else:
+        tab_width = 92
     DISABLED_TAB_STYLE = """
-    QTabBar::tab:disabled {
-        background: #e6e6e6;
-        color: #999999;
-        border-color: #dcdcdc;
-    }
-    """
+        QTabBar::tab:disabled {
+            background: #e6e6e6;
+            color: #999999;
+            border-color: #dcdcdc;
+        }
+        """
 
     custom_bar = ClickableTabBar()
     self.right_tabWidget.setTabBar(custom_bar)
     custom_bar.clicked.connect(lambda index: handle_tab_click(self, index))
 
-    self.right_tabWidget.setStyleSheet(Style.tab_bar_style + DISABLED_TAB_STYLE)
+    # self.right_tabWidget.setStyleSheet(Style.tab_bar_style + DISABLED_TAB_STYLE)
+    self.right_tabWidget.setStyleSheet(
+        Style.tab_bar_style(tab_width) + DISABLED_TAB_STYLE
+    )
 
 
 
     # Load config
     self.config = get_inch_config(self.selected_inch)
-    config_loader.set_config(self.config)
 
     # Create tabs
     self.tab_update = UpdateTab(self)
@@ -65,19 +79,6 @@ def init_tab(self):
     self.right_tabWidget.addTab(self.tab_showData, "Data Table")
     self.right_tabWidget.addTab(self.tab_line1.tab_line1, "Counter vs Sensor")
     self.right_tabWidget.addTab(self.tab_line_orientation, "Absolute vs Orientation")
-    self.right_tabWidget.addTab(self.tab_visualize, "Pipe Visualization")
-    # self.right_tabWidget.addTab(self.continue_heatmap_tab, "Heatmap")
-    self.heatmap_tab_index = self.right_tabWidget.addTab(
-        self.continue_heatmap_tab,
-        "Heatmap"
-    )
-    self.right_tabWidget.setTabEnabled(self.heatmap_tab_index, True)
-
-    # Graph placeholder (disabled)
-    self.graph_placeholder = QtWidgets.QWidget()
-    graph_index = self.right_tabWidget.addTab(self.graph_placeholder, "Graph")
-    self.right_tabWidget.setTabEnabled(graph_index, False)
-    self.graph_tab_index = graph_index
 
     # ---------------- NEW EMBEDDED APP TAB (RIGHT OF GRAPH) ----------------
     self.new_app_tab = QtWidgets.QWidget()
@@ -92,9 +93,25 @@ def init_tab(self):
 
     self.new_app_tab_index = new_app_index
 
+    self.right_tabWidget.addTab(self.tab_visualize, "Pipe Visualization")
+    # self.right_tabWidget.addTab(self.continue_heatmap_tab, "Heatmap")
+    self.heatmap_tab_index = self.right_tabWidget.addTab(
+        self.continue_heatmap_tab,
+        "Heatmap"
+    )
+    self.right_tabWidget.setTabEnabled(self.heatmap_tab_index, True)
+
+    # Graph placeholder (disabled)
+    self.graph_placeholder = QtWidgets.QWidget()
+    graph_index = self.right_tabWidget.addTab(self.graph_placeholder, "Graph")
+    self.right_tabWidget.setTabEnabled(graph_index, False)
+    self.graph_tab_index = graph_index
+
+
+
     # Disable tabs 4–8 initially
-    self.tabs_to_lock = [3, 4, 5]
-    self.tabs_to_unlock = [3, 4, 5]
+    self.tabs_to_lock = [3, 4, 5, 6, 7]
+    self.tabs_to_unlock = [3, 4, 5, 6, 7]
     for idx in self.tabs_to_lock:
         self.right_tabWidget.setTabEnabled(idx, False)
 

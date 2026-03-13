@@ -1,12 +1,15 @@
-
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QLineEdit, QPushButton, QHBoxLayout, QVBoxLayout
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtWidgets import QLineEdit, QPushButton, QHBoxLayout, QVBoxLayout, QMessageBox
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
+from matplotlib.widgets import RectangleSelector
 
 import egp_soft_based_on_mfl.Components.style1 as Style
+from .widgets.helper_func import select_weld
+from .widgets.weld_selection_loader_worker import WeldSelectionWorker
 from .widgets.weld_selector import weld_selection
+from ...utils.loaderdialog.loader_dialog import LoaderDialog
 
 
 class WeldSelectionTab(QtWidgets.QWidget):
@@ -30,16 +33,27 @@ class WeldSelectionTab(QtWidgets.QWidget):
         self.toolbar_x15 = NavigationToolbar(self.canvas_x15, self)
 
         # input fields
+        # input fields
         self.start15 = QLineEdit()
         self.end15 = QLineEdit()
+
+        self.start15.setFixedWidth(120)
+        self.end15.setFixedWidth(120)
+
+        self.start15.setPlaceholderText("Start Index")
+        self.end15.setPlaceholderText("End Index")
 
         # button
         self.button_x15 = QPushButton('Weld Selection')
         self.button_x15.resize(50, 50)
         self.button_x15.setStyleSheet(Style.btn_type_primary)
 
+        self.button_x15.setEnabled(False)
+
         # connect button -> original logic
-        self.button_x15.clicked.connect(lambda: weld_selection(self))
+        self.button_x15.clicked.connect(self.handle_weld_selection)
+        self.start15.textChanged.connect(self.validate_inputs)
+        self.end15.textChanged.connect(self.validate_inputs)
 
         # ---------------------------
         # layouts
@@ -48,6 +62,7 @@ class WeldSelectionTab(QtWidgets.QWidget):
         # Top row: toolbar + start/end + button  (this was hbox_15)
         self.hbox_15 = QHBoxLayout()
         self.hbox_15.addWidget(self.toolbar_x15)
+        self.hbox_15.addStretch()  # push next widgets to right
         self.hbox_15.addWidget(self.start15)
         self.hbox_15.addWidget(self.end15)
         self.hbox_15.addWidget(self.button_x15)
@@ -133,4 +148,100 @@ class WeldSelectionTab(QtWidgets.QWidget):
         query_job = self.config.client.query(query_for_start.format(a[0], a[1]))
         l1 = query_job.result().to_dataframe()
         return l1
+
+    def validate_inputs(self):
+
+        start_text = self.start15.text().strip()
+        end_text = self.end15.text().strip()
+
+        # Disable only if fields empty
+        if not start_text or not end_text:
+            self.button_x15.setEnabled(False)
+            return
+
+        # Disable if not integers
+        if not start_text.isdigit() or not end_text.isdigit():
+            self.button_x15.setEnabled(False)
+            return
+
+        # Both integers → enable button
+        self.button_x15.setEnabled(True)
+
+    def handle_weld_selection(self):
+
+        start_val = int(self.start15.text())
+        end_val = int(self.end15.text())
+
+        if start_val >= end_val:
+            QMessageBox.warning(
+                self,
+                "Invalid Range",
+                "Start index must be smaller than End index."
+            )
+            return
+
+        self.run_weld_selection()
+
+    def run_weld_selection(self):
+
+        self.loader = LoaderDialog(self, "Loading Weld Selection")
+
+        self.worker = WeldSelectionWorker(self)
+
+        # loader updates
+        self.worker.progress.connect(self.loader.update_progress)
+        self.worker.message.connect(self.loader.update_status)
+
+        # worker → renderer
+        self.worker.finished.connect(self.weld_selection_finished)
+
+        self.loader.show()
+        self.worker.start()
+
+    def weld_selection_finished(self, df_plot_data1):
+
+        if df_plot_data1 is None:
+            self.loader.close()
+            return
+
+        self.loader.update_status("Rendering plot...")
+        self.loader.update_progress(95)
+
+        QtWidgets.QApplication.processEvents()
+
+        index = df_plot_data1['index']
+
+        self.figure_x15.clear()
+        self.ax15 = self.figure_x15.add_subplot(111)
+
+        self.ax15.clear()
+
+        res = self.config.sensor_columns_hall_sensor
+
+        self.a2 = []
+
+        for i, data in enumerate(res):
+            self.ax15.plot(index, (df_plot_data1[data] + i * 1400).to_numpy(), label=i)
+            self.a2.append(df_plot_data1[data] + i * 1400)
+
+        self.ax15.set_ylabel('Hall Sensor')
+
+        self.canvas_x15.draw()
+
+        self.rs2 = RectangleSelector(
+            self.ax15,
+            lambda eclick, erelease: select_weld(self, eclick, erelease),
+            useblit=True
+        )
+
+        plt.connect('key_press_event', self.rs2)
+
+        self.weld_selection_load_finished()
+
+    def weld_selection_load_finished(self):
+
+        self.loader.update_progress(100)
+        self.loader.update_status("Completed")
+
+        QtCore.QTimer.singleShot(300, self.loader.close)
 
