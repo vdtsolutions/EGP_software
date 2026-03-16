@@ -699,7 +699,7 @@ def load_selected_project(self, project_name):
     print(f"selected run id : {self.runid}")
 
     # Set tab names (optional)
-    self.right_tabWidget.setTabText(self.right_tabWidget.indexOf(self.tab_update), "🔄 Update")
+    self.right_tabWidget.setTabText(self.right_tabWidget.indexOf(self.tab_update), "🔄 Project Details")
     self.right_tabWidget.setTabText(self.right_tabWidget.indexOf(self.tab_weld_selection), "⚙️ Weld Selection")
     self.right_tabWidget.setTabText(self.right_tabWidget.indexOf(self.tab_showData), "📊 Data Table")
     self.right_tabWidget.setTabText(self.right_tabWidget.indexOf(self.tab_line1.tab_line1),

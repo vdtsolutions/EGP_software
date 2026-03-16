@@ -79,8 +79,14 @@ class UpdateForm(QtWidgets.QWidget):
         self.btn1.setFixedWidth(500)
         self.btn1.clicked.connect(self.update_data)
 
-        # self.form_layout_inside_tab.setWidget(len(fields) + 1, 0, self.pushButton)
-        self.form_layout_inside_tab.setWidget(len(fields) + 1, 1, self.btn1)
+        # create horizontal layout
+        btn_layout = QtWidgets.QHBoxLayout()
+        btn_layout.addStretch()
+        btn_layout.addWidget(self.btn1)
+        btn_layout.addStretch()
+
+        # add layout to form layout
+        self.form_layout_inside_tab.setLayout(len(fields) + 1, QtWidgets.QFormLayout.SpanningRole, btn_layout)
 
         hbox.addWidget(self.formLayoutWidget)
         hbox.addStretch(1)

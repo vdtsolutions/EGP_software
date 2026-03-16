@@ -26,7 +26,7 @@ def setupUi(self, MainWindow):
     self.centralwidget.setObjectName("centralwidget")
     self.centralwidget.setStyleSheet("""
         QWidget#centralwidget {
-            background-image: url('D:/Anubhav/vdt_backend/egp_soft_based_on_mfl/Components/icons/vdt_blur.png');
+            background-image: url('D:/Anubhav/softwares/EGP_software/EGP_software/egp_soft_based_on_mfl/Components/icons/vdt_blur.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
